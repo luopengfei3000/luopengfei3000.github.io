@@ -1,8 +1,10 @@
 ---
 layout: post
 title: windows下MongoDB的安装及配置
+copyright: mongodb
 category: mongodb
 tags: [mongodb]
+keywords: mongodb
 ---
 这篇文件介绍windows下MongoDB的安装及配置。
 #### 一、先登录Mongodb官网https://www.mongodb.com/download-center#community下载安装包(32、64位)
