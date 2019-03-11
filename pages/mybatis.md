@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Mybatis 系列文章
-titlebar: Mybatis
+titlebar: mybatis
 subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; Mybatis 学习教程
 menu: mybatis
 css: ['blog-page.css']

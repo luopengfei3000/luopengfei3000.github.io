@@ -1,7 +1,7 @@
 ---
 layout: page
 title: MongoDB 系列文章
-titlebar: MongoDB
+titlebar: mongodb
 subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; MongoDB 系列教程
 menu: mongodb
 css: ['blog-page.css']
