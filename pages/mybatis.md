@@ -6,7 +6,7 @@ subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; Mybatis 
 menu: mybatis
 css: ['blog-page.css']
 permalink: /mybatis
-keywords: Mybatis,Mybatis 教程
+keywords: mybatis,Mybatis,Mybatis 教程
 ---
 
 <div class="row">
