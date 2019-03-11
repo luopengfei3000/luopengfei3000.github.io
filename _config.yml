@@ -56,35 +56,35 @@ paginate_path: 'page:num'
 # Navigation. top menu list
 menus:
 
-  -
-    href: /money.html
-    label: 挣钱
-    target: _self
+  ###-
+    ###href: /money.html
+    ###label: 挣钱
+    ###target: _self
 
-  -
-    href: /life.html
-    label: 故事
-    target: _self
+  ###-
+    ###href: /life.html
+    ###label: 故事
+    ###target: _self
 
-  -
-    href: /arch.html
-    label: 架构
-    target: _self
+  ###-
+    ###href: /arch.html
+    ###label: 架构
+    ###target: _self
 
-  -
-    href: /payment.html
-    label: 支付     
-    target: _self
+  ###-
+    ###href: /payment.html
+    ###label: 支付
+    ###target: _self
 
-  -
-    href: /link.html
-    label: 友链
-    target: _self
+  ###-
+    ###href: /link.html
+    ###label: 友链
+    ###target: _self
 
-  -
-    href: /about.html
-    label: 关于
-    target: _self
+  ###-
+    ###href: /about.html
+    ###label: 关于
+    ###target: _self
 
 
 # Navigation. main menu list
@@ -133,35 +133,35 @@ navs:
 # labels. my blog key words
 labels:
 
-  #-
-    #href: /fastdfs.html
-    #label: FastDFS
-    #target: _blank
+  ###-
+    ###href: /fastdfs.html
+    ###label: FastDFS
+    ###target: _blank
 
-  #-
-    #href: /mongodb.html
-    #label: MongoDB
-    #target: _blank
+  ###-
+    ###href: /mongodb.html
+    ###label: MongoDB
+    ###target: _blank
 
-  #-
-    #href: /docker.html
-    #label: Docker
-    #target: _blank
+  ###-
+    ###href: /docker.html
+    ###label: Docker
+    ###target: _blank
 
-  #-
-    #href: /open-source.html
-    #label: Code
-    #target: _blank
+  ###-
+    ###href: /open-source.html
+    ###label: Code
+    ###target: _blank
 
-  #-
-    #href: /it.html
-    #label: It
-    #target: _blank
+  ###-
+    ###href: /it.html
+    ###label: It
+    ###target: _blank
 
-  #-
-    #href: /python.html
-    #label: Python
-    #target: _blank
+  ###-
+    ###href: /python.html
+    ###label: Python
+    ###target: _blank
 
 
 # selected articles
