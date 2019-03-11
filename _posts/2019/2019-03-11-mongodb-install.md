@@ -5,7 +5,7 @@ category: mongodb
 tags: [mongodb]
 ---
 这篇文件介绍windows下MongoDB的安装及配置。
-#### 一、先登录Mongodb官网https://www.mongodb.com/download-center#community 下载   安装包。32、64位的都行。
+#### 一、先登录Mongodb官网https://www.mongodb.com/download-center#community下载安装包(32、64位)
 ![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-11-mongodb-install/01.png)
 #### 二、安装MongoDB
 ![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-11-mongodb-install/02.png)
@@ -41,12 +41,15 @@ tags: [mongodb]
 
 #### 五、配置本地windows mongodb 服务
 这样可设置为 开机自启动，可直接手动启动关闭，可通过命令行net start MongoDB 启动。该配置会大大方便。
-1. 先在data文件下创建一个新文件夹log（用来存放日志文件）
-2. 在Mongodb新建配置文件mongo.config
-3. 用记事本打开mongo.config，并输入：<br/>
+1.先在data文件下创建一个新文件夹log（用来存放日志文件）
+
+2.在Mongodb新建配置文件mongo.config
+
+3.用记事本打开mongo.config，并输入：<br/>
 dbpath=D:\software\MongoDB\data\db <br/>
 logpath=D:\software\MongoDB\data\log\mongo.log
-4. 用管理员身份打开cmd，配置windows服务 <br/>
+
+4.用管理员身份打开cmd，配置windows服务 <br/>
 cmd先跳转到 D:\software\MongoDB\bin目录下。<br/>
 输入：mongod --config "D:\software\Mongodb\mongo.config" --install --serviceName "MongoDB"<br/>
 即根据刚创建的mongo.config配置文件安装服务，名称为MongoDB。
