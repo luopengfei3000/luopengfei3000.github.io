@@ -40,7 +40,8 @@ tags: [mongodb]
 但是在本地windows“服务”中，是没有配置上mongodb 服务的，可以打开“服务”看下
 
 #### 五、配置本地windows mongodb 服务
-这样可设置为 开机自启动，可直接手动启动关闭，可通过命令行net start MongoDB 启动。该配置会大大方便。
+这样可设置为 开机自启动，可直接手动启动关闭，可通过命令行net start MongoDB 启动。该配置会大大方便。<br/>
+
 1.先在data文件下创建一个新文件夹log（用来存放日志文件）
 
 2.在Mongodb新建配置文件mongo.config
