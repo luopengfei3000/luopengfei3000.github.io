@@ -1,6 +1,7 @@
 ---
 layout: post
 title: windows下MongoDB的安装及配置
+no-post-nav: true
 category: mongodb
 tags: [mongodb]
 keywords: mongodb
