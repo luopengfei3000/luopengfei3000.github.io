@@ -1,7 +1,6 @@
 ---
 layout: post
 title: windows下MongoDB的安装及配置
-copyright: mongodb
 category: mongodb
 tags: [mongodb]
 keywords: mongodb

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Mybatis中ResutlType和ResultMap的区别
-copyright: mybatis
 category: mybatis
 tags: [mybatis]
 keywords: mybatis
