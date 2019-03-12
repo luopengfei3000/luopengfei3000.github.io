@@ -73,7 +73,7 @@ p2--->名称：李四---年龄：20---地址：地球
 ![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-12-java-memory-diagrams/2019-03-12-java-memory-diagrams.png)
 
 <strong>执行流程：</strong>
-<p style="color:D1EEEE;font-size:20px;">java文件通过编译成class文件，class文件通过类加载器加载到方法区中，程序首先会加载核心类库，也就是程序运行所需要的一些最基本的类。</p>
+<p>java文件通过编译成class文件，class文件通过类加载器加载到方法区中，程序首先会加载核心类库，也就是程序运行所需要的一些最基本的类。</p>
 
 <p>接着程序会找代码主方法所在的类，Test.class这个类加载到方法区中，这个类中没有属性，但有一个静态方法main，此时将Test.class
 这个类所在内存分成两部分，一部分是非静态区域，一部分是静态区域，main方法加载到静态区域，但并未执行，这一步仅仅是将mian方法存储到方法区，
