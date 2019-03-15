@@ -148,6 +148,11 @@ labels:
     label: Mybatis
     target: _blank
 
+  -
+    href: /database.html
+    label: 数据库
+    target: _blank
+
   ###-
     ###href: /docker.html
     ###label: Docker
