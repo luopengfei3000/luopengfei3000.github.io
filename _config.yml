@@ -153,6 +153,11 @@ labels:
     label: 数据库
     target: _blank
 
+  -
+    href: /idea.html
+    label: Idea
+    target: _blank
+
   ###-
     ###href: /docker.html
     ###label: Docker
