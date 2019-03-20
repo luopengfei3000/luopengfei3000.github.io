@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Vue框架了解
+title: vue框架介绍
 no-post-nav: true
 category: front-end
 tags: [front-end]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Vue环境搭建
+title: vue项目从部署到启动
 no-post-nav: true
 category: front-end
 tags: [front-end]
@@ -24,14 +24,14 @@ excerpt : ①安装node.js②安装cnpm③cnpm安装脚手架vue-cli④构建项
 将vue项目建在F盘的vue-workspace文件夹下，利用命令进入此目录。<br/>
 在cmd中输入盘符F:回车即可进入F盘，<br/>
 然后执行命令进入F:\vue-workspace路径目录下，<br/>
-再输入新建项目命令 vue init webpack **javalsj-vue**(说明：此处为项目名称)，执行后会自动生成vue项目。
+再输入新建项目命令 vue init webpack **java-vue**(说明：此处为项目名称)，执行后会自动生成vue项目。
 
 #### 五、安装项目依赖
 上面脚手架自动生成的vue项目不能直接运行，需要加载上项目需要的依赖包才能运行。<br/>
-① 通过在cmd中使用命令先定位到项目所在路径目录下F:\vue-workspace\javalsj-vue，<br/>
+① 通过在cmd中使用命令先定位到项目所在路径目录下F:\vue-workspace\java-vue，<br/>
 ② 然后输入命令 cnpm install 安装项目所需的依赖包资源。<br/>
 **注意：**（有时会遇到奇怪的报错，然后通过先执行cnpm rebuild node-sass，后执行cnpm install解决，此步骤不是必须的。）
 
 #### 六、运行项目
-在cmd中，注意需要使用命令先定位到F:\workspacesvue-workspace\javalsj-vue目录下，然后再输入命令 npm run dev 来运行项目。<br/>
+在cmd中，注意需要使用命令先定位到F:\workspacesvue-workspace\java-vue目录下，然后再输入命令 npm run dev 来运行项目。<br/>
 项目运行成功后浏览器访问地址 http://localhost:8080 就可以查看效果啦。
