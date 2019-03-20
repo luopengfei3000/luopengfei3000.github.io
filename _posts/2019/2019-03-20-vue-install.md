@@ -1,6 +1,6 @@
 ---
 layout: post
-title: vue js环境搭建
+title: Vue环境搭建
 no-post-nav: true
 category: front-end
 tags: [front-end]
@@ -23,7 +23,7 @@ keywords: front-end
 将vue项目建在F盘的vue-workspace文件夹下，利用命令进入此目录。<br/>
 在cmd中输入盘符F:回车即可进入F盘，<br/>
 然后执行命令进入F:\vue-workspace路径目录下，<br/>
-再输入新建项目命令 vue init webpack <font color=#4876FF>**javalsj-vue**</font>(说明：此处为项目名称)，执行后会自动生成vue项目。
+再输入新建项目命令 vue init webpack **javalsj-vue**(说明：此处为项目名称)，执行后会自动生成vue项目。
 
 #### 五、安装项目依赖
 上面脚手架自动生成的vue项目不能直接运行，需要加载上项目需要的依赖包才能运行。<br/>
