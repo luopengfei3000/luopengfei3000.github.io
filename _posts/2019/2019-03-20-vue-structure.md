@@ -5,7 +5,7 @@ no-post-nav: true
 category: front-end
 tags: [front-end]
 keywords: front-end
-excerpt : Vue框架了解
+excerpt : 什么是vue框架
 ---
 
 #### 一、什么是vue框架

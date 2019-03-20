@@ -5,6 +5,7 @@ no-post-nav: true
 category: java
 tags: [java]
 keywords: java
+excerpt : Java--Static内存图详解
 ---
 ### 案例
 <strong>Person类：</strong>

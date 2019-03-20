@@ -5,6 +5,7 @@ no-post-nav: true
 category: mybatis
 tags: [mybatis]
 keywords: mybatis
+excerpt : Mybatis中ResutlType和ResultMap的区别
 ---
 
 在使用Mybatis进行查询的时候，在结果封装方面有两个选择：ResultType和ResultMap！ <br/>

@@ -5,6 +5,7 @@ no-post-nav: true
 category: front-end
 tags: [front-end]
 keywords: front-end
+excerpt : ①安装node.js②安装cnpm③cnpm安装脚手架vue-cli④构建项目⑤安装项目依赖⑥运行项目
 ---
 
 #### 一、安装node.js

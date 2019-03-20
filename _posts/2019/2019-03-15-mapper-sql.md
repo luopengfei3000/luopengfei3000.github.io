@@ -5,6 +5,7 @@ no-post-nav: true
 category: mybatis
 tags: [mybatis]
 keywords: mybatis
+excerpt : 将一个mapper中的sql片段引用到其他mapper中
 ---
 mdsItemMapper文件内容如下：
 ```
