@@ -33,6 +33,10 @@ Cli是Command Line Interface的简写，是一种命令行接口，实现自动�
 然后执行命令进入F:\angular-workspace路径目录下，<br/>
 再输入新建项目命令 ng new **java-angular**(说明：此处为项目名称)，执行后会自动生成angular项目。
 
+![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-20-angular-install/01.png)
+
+注意：ng new ** 会提示你要把哪些特性包含在初始的应用项目中，请按 Enter 或 Return 键接受默认值即可。创建项目过程中会下载安装依赖的包，比较花费时间。
+
 #### 六、安装项目依赖
 上面脚手架自动生成的vue项目不能直接运行，需要加载上项目需要的依赖包才能运行。<br/>
 ① 通过在cmd中使用命令先定位到项目所在路径目录下F:\angular-workspace\java-angular，<br/>
