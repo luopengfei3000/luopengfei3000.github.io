@@ -7,8 +7,9 @@ keywords: java
 excerpt : Java--Static内存图详解
 ---
 
-## 常用语法
-### 标题
+## 案例
+### Person类
+
 ```
 public class Person{
 
