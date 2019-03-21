@@ -7,8 +7,11 @@ tags: [java]
 keywords: java
 excerpt : Java--Static内存图详解
 ---
+Java--Static内存图详解
+
 ## 案例
 ### Person类
+
 ```
 public class Person{
 
@@ -47,7 +50,9 @@ public class Person{
 	}
 }
 ```
+
 ### Test类
+
 ```
 public class Test {
     public static void main(String[] args) {
@@ -64,15 +69,19 @@ public class Test {
     }
 }
 ```
+
 ### 输出结果
+
 ```
 p1--->名称：张三---年龄：80---地址：地球
 p2--->名称：李四---年龄：20---地址：地球
 ```
 ### 内存图
+
 ![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-12-java-memory-diagrams/2019-03-12-java-memory-diagrams.png)
 
 ### 执行流程
+
 <p>java文件通过编译成class文件，class文件通过类加载器加载到方法区中，程序首先会加载核心类库，也就是程序运行所需要的一些最基本的类。</p>
 
 <p>接着程序会找代码主方法所在的类，Test.class这个类加载到方法区中，这个类中没有属性，但有一个静态方法main，此时将Test.class
