@@ -1,8 +1,10 @@
 ---
 layout: post
-title: markdown 使用总结
-category: other
-tags: [other]
+title: Java--Static内存图详解
+category: java
+tags: [java]
+keywords: java
+excerpt : Java--Static内存图详解
 ---
 
 ## 常用语法
