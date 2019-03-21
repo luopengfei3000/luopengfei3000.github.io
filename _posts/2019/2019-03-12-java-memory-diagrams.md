@@ -7,12 +7,10 @@ tags: [java]
 keywords: java
 excerpt : Java--Static内存图详解
 ---
-Java--Static内存图详解
 
-## 案例
-### Person类
-
-``` xml
+## 常用语法
+### 标题
+```
 public class Person{
 
     private int age;
@@ -49,11 +47,11 @@ public class Person{
 		return "名称："+this.name+"---年龄："+this.age+"---地址："+Person.address;
 	}
 }
-```
+``` 
 
 ### Test类
 
-``` xml
+```
 public class Test {
     public static void main(String[] args) {
 	    Person p1 = new Person();
@@ -68,7 +66,7 @@ public class Test {
 	    System.out.println("p2--->"+p2);
     }
 }
-```
+``` 
 
 ### 输出结果
 
