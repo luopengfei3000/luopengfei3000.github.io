@@ -11,12 +11,42 @@ markdown来写文章，有一些命令或者是快捷键不是特别熟悉在此
 ## 常用语法
 ### 标题
 ```
-# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题
+public class Person{
+
+    private int age;
+    private String name;
+    static String address;
+
+	public Person() {
+	
+	}
+
+	public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+	@Override
+	public String toString() {
+		return "名称："+this.name+"---年龄："+this.age+"---地址："+Person.address;
+	}
+}
 ``` 
 注：# 和「一级标题」之间建议保留一个字符的空格，这是最标准的 Markdown 写法。
 
