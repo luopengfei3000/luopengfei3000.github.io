@@ -48,38 +48,25 @@ public class Person{
 	}
 }
 ``` 
-注：# 和「一级标题」之间建议保留一个字符的空格，这是最标准的 Markdown 写法。
 
-### 列表
+### Test类
 
-列表格式也很常用，在 Markdown 中，你只需要在文字前面加上 - 就可以了，例如：
 ```
-- 文本1
-- 文本2
-- 文本3
+public class Test {
+    public static void main(String[] args) {
+	    Person p1 = new Person();
+	    p1.setName("张三");
+	    p1.setAge(80);
+	    p1.address = "月球";
+	    Person p2 = new Person();
+	    p2.setName("李四");
+	    p2.setAge(20);
+	    p2.address = "地球";
+	    System.out.println("p1--->"+p1);
+	    System.out.println("p2--->"+p2);
+    }
+}
 ``` 
-如果你希望有序列表，也可以在文字前面加上 1. 2. 3. 就可以了，例如：
-```
-1. 文本1
-2. 文本2
-3. 文本3
-``` 
-注：-、1.和文本之间要保留一个字符的空格。
-
-### 链接和图片
-在 Markdown 中，插入链接不需要其他按钮，你只需要使用 ```  xml[显示文本](链接地址) ``` 这样的语法即可，例如：
-```
-[Deadpool](http://img31.mtime.cn/mg/2016/02/05/145836.38850143_210X210X4.jpg)
-``` 
-在 Markdown 中，插入图片不需要其他按钮，你只需要使用 ``` ![](图片链接地址)  ```这样的语法即可，例如：
-```
-![](http://img31.mtime.cn/mg/2016/02/05/145836.38850143_210X210X4.jpg)
-```
-注：插入图片的语法和链接的语法很像，只是前面多了一个 ！。
-
-效果如下：<br />
-[Deadpool](http://img31.mtime.cn/mg/2016/02/05/145836.38850143_210X210X4.jpg)<br />
-![](http://img31.mtime.cn/mg/2016/02/05/145836.38850143_210X210X4.jpg)
 
 ### 引用
 在我们写作的时候经常需要引用他人的文字，这个时候引用这个格式就很有必要了，在 Markdown 中，你只需要在你希望引用的文字前面加上```   > ``` 就好了，例如：
