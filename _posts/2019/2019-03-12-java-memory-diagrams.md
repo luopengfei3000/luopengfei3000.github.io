@@ -12,7 +12,7 @@ Java--Static内存图详解
 ## 案例
 ### Person类
 
-```
+``` xml
 public class Person{
 
     private int age;
@@ -53,7 +53,7 @@ public class Person{
 
 ### Test类
 
-```
+``` xml
 public class Test {
     public static void main(String[] args) {
 	    Person p1 = new Person();
@@ -72,7 +72,7 @@ public class Test {
 
 ### 输出结果
 
-```
+``` xml
 p1--->名称：张三---年龄：80---地址：地球
 p2--->名称：李四---年龄：20---地址：地球
 ```
