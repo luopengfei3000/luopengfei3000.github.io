@@ -159,7 +159,7 @@ import { MessageService } from '../message.service';
 
 此处设messageService为public是因为要在messageService在模版文件中用到。
 
-<label style="color:red">注意：⚠️Angular只会绑定公共的属性**</label>
+<label style="color:red">**注意：⚠️Angular只会绑定公共的属性**</label>
 
 #### 9.绑定到 MessageService
 修改messageComponent的模版文件
