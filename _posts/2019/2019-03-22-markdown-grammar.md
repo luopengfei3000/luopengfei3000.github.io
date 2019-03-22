@@ -105,10 +105,10 @@ markdown来写文章，有一些命令或者是快捷键不是特别熟悉在此
 
 在 Markdown 中，插入图片不需要其他按钮，你只需要使用 ``` ![](图片链接地址)  ```这样的语法即可，例如：
 ```  xml
-![图片浏览](https://note.youdao.com/yws/api/personal/file/WEB445c7c48543ec757061ff7d8391934c0?method=getImage&version=3471&cstk=ZtCjzUuk)
+![图片浏览](https://luopengfei3000.github.io/assets/images/2019/other/萌宠.jpg)
 ```
 
-![图片浏览](https://note.youdao.com/yws/api/personal/file/WEB445c7c48543ec757061ff7d8391934c0?method=getImage&version=3471&cstk=ZtCjzUuk)
+![图片浏览](https://luopengfei3000.github.io/assets/images/2019/other/萌宠.jpg)
 
 <label style="color:red">**注意：⚠插入图片的语法和链接的语法很像，只是前面多了一个 ！**</label>
 
@@ -163,11 +163,22 @@ Markdown 的粗体和斜体也非常简单，用两个```  *```  包含一段文
 ```
 这是第一段内容
 ***
+---
 这是第二段内容
 ```
 
-<label style="color:blue">**效果如下：**</label>
+特别注意以下几种情况：
+1. 在代码高亮显示中，{{test}} 这个将代码中显示为空
 
-这是第一段内容
-***
-这是第二段内容
+例如：
+&lt;h2&gt;{{hero.name}}Details&lt;/h2&gt;
+
+```
+<h2>{{hero.name}}Details</h2>
+```
+解决方式：
+&lt;h2&gt;{% raw %}{{hero.name}}{% endraw %} Details&lt;/h2&gt;
+
+```
+<h2>{% raw %}{{hero.name}}{% endraw %} Details</h2>
+```
