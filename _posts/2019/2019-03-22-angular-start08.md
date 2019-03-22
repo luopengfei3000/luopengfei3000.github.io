@@ -7,7 +7,8 @@ keywords: front-end
 excerpt : 服务(Service)(2)
 ---
 
-## 可观察的对象（observable）的数据
+可观察的对象（observable）的数据
+
 在现在的是情况下：HeroService.getHeroes() 的函数签名是同步的，它所隐含的假设是 HeroService 总是能同步获取英雄列表数据。 而 HeroesComponent 也同样假设能同步取到 getHeroes() 的结果。但是在实际的项目中，这种情况几乎是不可能实现的，因为，在实际的项目中，这些数据是来源于远端的服务器上，而这个过程始终是一个异步的过程。
 
 在实际的项目中：HeroService 必须等服务器给出响应， 而 getHeroes() 不能立即返回英雄数据， 浏览器也不会在该服务等待期间停止响应。HeroService.getHeroes() 必须具有某种形式的异步函数签名。它可以使用回调函数，可以返回 Promise（承诺），也可以返回 Observable（可观察对象）。
