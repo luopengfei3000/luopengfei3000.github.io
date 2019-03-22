@@ -166,19 +166,3 @@ Markdown 的粗体和斜体也非常简单，用两个```  *```  包含一段文
 ---
 这是第二段内容
 ```
-
-特别注意以下几种情况：
-1. 在代码高亮显示中，{{test}} 这个将代码中显示为空
-
-例如：
-> &lt;h2&gt;{{hero.name}}Details&lt;/h2&gt;
-
-```
-<h2>{{hero.name}}Details</h2>
-```
-解决方式：
-> &lt;h2&gt;{% raw %}{{hero.name}}{% endraw %} Details&lt;/h2&gt;
-
-```
-<h2>{% raw %}{{hero.name}}{% endraw %} Details</h2>
-```
