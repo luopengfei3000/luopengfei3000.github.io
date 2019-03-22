@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Angular6学习笔记6: 主从组件
+title: Angular6学习笔记8：服务(Service)(2)
 no-post-nav: true
 category: front-end
 tags: [front-end]
 keywords: front-end
-excerpt : 主从组件
+excerpt : 主从组件111111
 ---
 
 主从组件
