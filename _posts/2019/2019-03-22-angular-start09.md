@@ -107,11 +107,7 @@ imports: [ RouterModule.forRoot(routes) ]
 在当前的应用中：添加一个&lt;nav&gt;元素，并在其中放一个链接&lt;a&gt;元素，当点击它时，就会触发一个到 HeroesComponent 的导航。
 
 ```
-{% raw %}
-~~~
-<h1>{{App.name}}</h1>
-~~~
-{% endraw %}
+{% raw %}<h1>{{title}}</h1>{% endraw %}
 <h1>{{title}}</h1>
 <nav>
   <a routerLink="/heroes">Heroes</a>
