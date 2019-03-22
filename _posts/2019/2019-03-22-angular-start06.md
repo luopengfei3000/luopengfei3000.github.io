@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angular6学习笔记8：服务(Service)(2)
+title: Angular6学习笔记6：主从组件
 no-post-nav: true
 category: front-end
 tags: [front-end]
