@@ -5,7 +5,7 @@ no-post-nav: true
 category: front-end
 tags: [front-end]
 keywords: front-end
-excerpt : 主从组件111111
+excerpt : 主从组件
 ---
 
 主从组件
