@@ -72,11 +72,11 @@ import { Component, OnInit, Input } from '@angular/core';
 
 这样，就对heroDetail的类文件写好了，heroDetail所做的工作就是：从其他的父组件中接收一个Hero类型的对象，并将它展示出来
 
-###　3.显示 HeroDetailComponent
+### 3.显示 HeroDetailComponent
 
 现在有HeroDetail组件显示每一个Hero的具体详情信息，而Heroes组件需要显示每一个Hero的详细信息，这个时候，Heroes组件和heroDetail组件就有了主从关系，heroes组件需要将需要展示详情的Hero对象传给具有展示功能的HeroDetail组件
 
-HeroDetailComponent 的选择器是 'app-hero-detail'。 把 <app-hero-detail> 添加到 HeroesComponent 模板的底部，以便把英雄详情的视图显示到那里，并把 HeroesComponent.selectedHero 绑定到该元素的 hero 属性， HeroesComponent模版即
+HeroDetailComponent 的选择器是 'app-hero-detail'。 把 <app-hero-detail> 添加到 HeroesComponent 模板的底部，以便把英雄详情的视图显示到那里，并把 HeroesComponent.selectedHero 绑定到该元素的 hero 属性，HeroesComponent模版即
 
 ```
 <h2>My Heroes</h2>
