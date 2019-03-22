@@ -103,10 +103,10 @@ imports: [ RouterModule.forRoot(routes) ]
 
 ### 5.添加路由链接 (routerLInk)
 在正常的应用中，是不可能然用户去地址栏输入某些地址的，而且用户也不可能知道需要输入什么，用户应该在点击某个按钮或者超级链接的时候，是应用跳转到相应的页面，使路由器自动的去跳转。
-在当前的应用中：添加一个 <nav> 元素，并在其中放一个链接 <a> 元素，当点击它时，就会触发一个到 HeroesComponent 的导航。 
+在当前的应用中：添加一个&lt;nav&gt;元素，并在其中放一个链接&lt;a&gt;元素，当点击它时，就会触发一个到 HeroesComponent 的导航。 
 
 ```
-&lt;h1&gt;{{title}}&lt;/h1&gt;
+<h1>{{title}}</h1>
 <nav>
   <a routerLink="/heroes">Heroes</a>
 </nav>
