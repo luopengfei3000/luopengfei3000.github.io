@@ -37,22 +37,22 @@ UPDATE src/app/app.module.ts (475 bytes)
 
 CSS 元素选择器 app-heroes 用来在父组件的模板中匹配 HTML 元素的名称，以识别出该组件。<br/>
 ngOnInit是一个生命周期钩子，Angular 在创建完组件后很快就会调用ngOnInit。这里是放置初始化逻辑的好地方。<br/>
-始终要 export 这个组件类，以便在其它地方（比如AppModule）导入它。<br/>
+始终要 export 这个组件类，以便在其它地方（比如AppModule）导入它。<br/>
 
-###　２.在新建的组件中添加一个属性
+### 2.在新建的组件中添加一个属性
 在HeroesComponent的类文件（heroes.component.ts）中添加一个属性
 ```
 hero = 'Windstorm';
 ```
 在HeroesComponent的模板文件（heroes.component.html）中展示这个属性
 ```
-{{hero}}
+{% raw %}{{hero}}{% endraw %}
 ```
 
 在heroes组件的类文件（heroes.component.ts）中selector（组件的选择器）中的：“app-heroes”就是这个heroes组件的元素选择器，所以显示heroes组件，将<app-heroes> 元素添加到 AppComponent 的模板文件（app.component.html）中就可以了。<br/>
 在src/app/app.component.html中：
 ```
-<h1>{{title}}</h1>
+<h1>{% raw %}{{title}}{% endraw %}</h1>
 <app-heroes></app-heroes>
 ```
 ### 3.创建Hero类
@@ -83,7 +83,7 @@ hero: Hero = {
 此时，保存以后，页面就会显示对象的类型，因为原来的hero属性是string型，现在是Object型。<br/>
 修改HeroesComponent模板中的绑定，以显示hero的名字，并在详情中显示 id 和 name，
 ```
-<h2>{{hero.name}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
+<h2>{% raw %}{{hero.name}}{% endraw %} Details</h2>
+<div><span>id: </span>{% raw %}{{hero.id}}{% endraw %}</div>
+<div><span>name: </span>{% raw %}{{hero.name}}{% endraw %}</div>
 ```

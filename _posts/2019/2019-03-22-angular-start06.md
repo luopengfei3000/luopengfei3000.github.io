@@ -37,8 +37,8 @@ UPDATE src/app/app.module.ts (548 bytes)
  hero-detail.component.html如下：
  ```
 <div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <h2>{% raw %}{{hero.name | uppercase}}{% endraw %} Details</h2>
+  <div><span>id: </span>{% raw %}{{hero.id}}{% endraw %}</div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
@@ -82,7 +82,7 @@ HeroDetailComponent 的选择器是 'app-hero-detail'。 把 <app-hero-detail> �
 <h2>My Heroes</h2>
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <span class="badge">{% raw %}{{hero.id}}{% endraw %}</span> {% raw %}{{hero.name}}{% endraw %}
   </li>
 </ul>
 <app-hero-detail [hero]="selectedHero"></app-hero-detail>

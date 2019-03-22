@@ -92,7 +92,7 @@ imports: [ RouterModule.forRoot(routes) ]
 打开 AppComponent 的模板，把 <app-heroes> 元素替换为 <router-outlet> 元素。
 
 ```
-<h1>{{title}}</h1>
+{% raw %}<h1>{{title}}</h1>{% endraw %}
 <router-outlet></router-outlet>
 <app-messages></app-messages>
 ```
@@ -108,7 +108,6 @@ imports: [ RouterModule.forRoot(routes) ]
 
 ```
 {% raw %}<h1>{{title}}</h1>{% endraw %}
-<h1>{{title}}</h1>
 <nav>
   <a routerLink="/heroes">Heroes</a>
 </nav>

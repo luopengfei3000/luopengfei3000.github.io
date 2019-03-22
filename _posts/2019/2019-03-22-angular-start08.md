@@ -82,7 +82,7 @@ CLI 在 src/app/messages中创建了组件文件，并且把 MessagesComponent �
 ### 2.修改 AppComponent 的模板来显示所生成的 MessagesComponent
 
 ```
-<h1>{{title}}</h1>
+{% raw %}<h1>{{title}}</h1>{% endraw %}
 <app-heroes></app-heroes>
 <app-messages></app-messages>
 ```
@@ -174,7 +174,7 @@ constructor(public messagesService: MessagesService) { }
   <h2>Messages</h2>
   <button class="clear" (click)="messageService.clear()">clear
   </button>
-  <div *ngFor='let message of messageService.messages'> {{message}}</div>
+  <div *ngFor='let message of messageService.messages'>{% raw %}{{message}}{% endraw %}</div>
 </div>
 ```
 

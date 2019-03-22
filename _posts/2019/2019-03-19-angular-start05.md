@@ -65,7 +65,7 @@ heroes = HEROES;
 &lt;h2&gt;My Heroes&lt;/h2&gt;
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <span class="badge">{% raw %}{{hero.id}}{% endraw %}</span> {% raw %}{{hero.name}}{% endraw %}
   </li>
 </ul>
 ```
@@ -223,12 +223,12 @@ onSelect(hero: Hero): void {
 <h2>My Heroes</h2>
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <span class="badge">{% raw %}{{hero.id}}{% endraw %}</span> {% raw %}{{hero.name}}{% endraw %}
   </li>
 </ul>
  
-<h2>{{selectedHero.name}} Details</h2>
-<div><span>id: </span>{{selectedHero.id}}</div>
+<h2>{% raw %}{{selectedHero.name}}{% endraw %} Details</h2>
+<div><span>id: </span>{% raw %}{{selectedHero.id}}{% endraw %}</div>
 <div>
   <label>name:
     <input [(ngModel)]="selectedHero.name" placeholder="name">
@@ -247,8 +247,8 @@ onSelect(hero: Hero): void {
 ```
 
 <div *ngIf="selectedHero">
-  <h2>{{selectedHero.name}} Details</h2>
-  <div><span>id: </span>{{selectedHero.id}}</div>
+  <h2>{% raw %}{{selectedHero.name}}{% endraw %} Details</h2>
+  <div><span>id: </span>{% raw %}{{selectedHero.id}}{% endraw %}</div>
   <div>
     <label>name:
       <input [(ngModel)]="selectedHero.name" placeholder="name">
