@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angular6学习笔记7：服务(Service)(2)
+title: Angular6学习笔记8：服务(Service)(2)
 category: front-end
 tags: [front-end]
 keywords: front-end
