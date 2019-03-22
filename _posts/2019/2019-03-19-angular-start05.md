@@ -76,9 +76,9 @@ heroes = HEROES;
 
 - heroes 就是来自 HeroesComponent 类的列表。
 
-- 当依次遍历heroes这个列表时，hero 会为每个迭代保存当前的数据对象。
+- 当依次遍历heroes这个列表时，hero会为每个迭代保存当前的数据对象。
 
-<label style="color:red">注意：⚠️ *ngFor的   *  不能丢掉</label>
+<label style="color:red">**注意：⚠️ *ngFor的 * 不能丢掉**</label>
 
 ### 4.为HeroesComponent添加私有样式
 在此之前，在 styles.css 中为整个应用设置了一些基础的样式，但是那些并不适用于现在这个列表，所以，要为这些列表写自己的私有的样式。
@@ -240,7 +240,7 @@ onSelect(hero: Hero): void {
 
 这里是因为：当启动应用时，selectedHero这个属性还没有初始化，此时的selectedHero=undefined，此时就用*ngIf 当selectedHero===undefined时，让这段隐藏，在selectedHero！==undefined时，在显示出来。用一个<code>&lt;div&gt;</code><code>&lt;/div&gt;</code>将其包起来。
 
-<label style="color:red">注意：⚠️ *ngIf的 * 不能丢掉</label>
+<label style="color:red">**注意：⚠️ *ngIf的 * 不能丢掉**</label>
 
 具体如下：
 
