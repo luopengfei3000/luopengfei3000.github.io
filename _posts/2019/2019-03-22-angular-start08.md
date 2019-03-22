@@ -159,7 +159,7 @@ import { MessageService } from '../message.service';
 
 此处设messageService为public是因为要在messageService在模版文件中用到。
 
-**注意：⚠️Angular只会绑定公共的属性**
+<label style="color:red">注意：⚠️Angular只会绑定公共的属性**</label>
 
 #### 9.绑定到 MessageService
 修改messageComponent的模版文件
@@ -179,7 +179,7 @@ import { MessageService } from '../message.service';
 
 - Angular 的事件绑定把按钮的 click 事件绑定到了 MessageService.clear()这个方法上了。
 
-#### 10.Message加css
+#### 10.Message加css样式
 为MessagesComponent组件添加私有样式
 
 ```
