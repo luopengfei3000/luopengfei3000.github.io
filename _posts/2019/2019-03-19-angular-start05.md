@@ -11,12 +11,16 @@ excerpt : 在页面中显示列表(*ngFor/*ngIf)
 上一章将一个Object对象显示在模版文件中(html)，而真正在项目中，数据是来自后端服务器返回的，此时先创建一些模拟的数据。
 
 ### 1.创建模拟的数据
+
 在 src/app/ 文件夹中创建一个名叫 mock-heroes.ts 的文件。
+
 ```
 E:\angular-workspace\new-angularaa>ng generate class mock-heroes
 CREATE src/app/mock-heroes.ts (28 bytes)
 ```
+
 定义一个包含十个Hero(Hero类型)的常量数组 HEROES，并导出它。
+
 ```
 import {Hero} from './hero';
  
@@ -37,18 +41,26 @@ export class MockHeroes {
  
 }
 ```
+
 ### 2.显示创建的数据
+
 在HeroesComponent页面上显示这些数据
 - 先在HeroesComponent类文件中导入在mock-heroes.ts 的HEROES
+
 ```
 import {HEROES} from '../mock-heroes';
 ```
+
 - 在HeroesComponent类文件中添加一个属性：heroes，使其等于导入的HEROES数组，这样可以在HeroesComponent类文件中使用HEROES数组
+
 ```
 heroes = HEROES;
 ```
+
 ### 3.使用*ngFor将这些数据依次展示出来
+
 打开 HeroesComponent 的模板文件(html)，并做如下修改：
+
 ```
 <h2>My Heroes</h2>
 <ul class="heroes">
@@ -57,6 +69,7 @@ heroes = HEROES;
   </li>
 </ul>
 ```
+
 *ngFor 是一个 Angular 的复写器（repeater）指令。 它会为列表中的每项数据复写它的宿主元素。
 
 - <code>&lt;li&gt;</code> 就是 *ngFor 的宿主元素（会将<code>&lt;li&gt;</code>标签中包含的所有元素全部遍历）。
@@ -72,6 +85,7 @@ heroes = HEROES;
 
 定义私有样式的方式：
 - 内联在 @Component.styles 数组中
+
 ```
 import {Component, OnInit} from '@angular/core';
 import {Hero} from '../hero';
@@ -97,7 +111,9 @@ export class HeroesComponent implements OnInit {
  
 }
 ```
+
 - 或者在 @Component.styleUrls 所指出的样式表文件中。
+
 ```
 
 import {Component, OnInit} from '@angular/core';
@@ -124,7 +140,9 @@ export class HeroesComponent implements OnInit {
  
 }
 ```
+
 在这里，用第二种方式(推荐)去添加样式，打开heroes.component.css文件中添加一下样式：
+
 ```
 .selected {
   background-color: #CFD8DC !important;
@@ -180,14 +198,17 @@ export class HeroesComponent implements OnInit {
 
 <pre class="has">
 <code class="language-html">&lt;li *ngFor="let hero of heroes" (click)="onSelect(hero)"&gt;</code></pre>
+
 ```
 <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
 ```
+
 click 外面的圆括号会让 Angular 监听这个 <code>&lt;li&gt;</code> 元素的 click 事件。 当用户点击 <code>&lt;li&gt;</code> 时，Angular 就会执行函数 onSelect(hero)。
 
 - 添加 click 事件处理器
 
 添加一个selectedHero标示被选中的hero，在onSelect方法中，将选中的那个hero赋值给selectHero。
+
 ```
 selectedHero: Hero;
  
@@ -195,7 +216,9 @@ onSelect(hero: Hero): void {
   this.selectedHero = hero;
 }
 ```
+
 - 修改模版
+
 ```
 <h2>My Heroes</h2>
 <ul class="heroes">
@@ -220,6 +243,7 @@ onSelect(hero: Hero): void {
 <label style="color:red">注意：⚠️ *ngIf的 * 不能丢掉</label>
 
 具体如下：
+
 ```
 
 <div *ngIf="selectedHero">
@@ -234,6 +258,7 @@ onSelect(hero: Hero): void {
 ```
 
 ### 6.给选中的hero添加样式
+
 Angular 的CSS类绑定机制让根据条件添加或移除一个 CSS 类变得很容易。 只要把 [class.some-css-class]="some-condition" 添加到你要施加样式的元素上就可以了。
 
 在 HeroesComponent 模板中的 <code>&lt;li&gt;</code> 元素上添加 [class.selected] 绑定，即：
