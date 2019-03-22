@@ -1,6 +1,6 @@
 ---
 layout: post
-title: angular项目从部署到启动
+title: Angular6学习笔记1：angular项目从部署到启动
 category: front-end
 tags: [front-end]
 keywords: front-end
@@ -32,7 +32,7 @@ Cli是Command Line Interface的简写，是一种命令行接口，实现自动�
 然后执行命令进入F:\angular-workspace路径目录下，<br/>
 再输入新建项目命令 ng new **java-angular**(说明：此处为项目名称)，执行后会自动生成angular项目。
 
-![](https://luopengfei3000.github.io/assets/images/2019/article/2019-03-20-angular-install/01.png)
+![](https://luopengfei3000.github.io/assets/images/2019/angular/2019-03-20-angular-install/01.png)
 
 注意：ng new ** 会提示你要把哪些特性包含在初始的应用项目中，请按 Enter 或 Return 键接受默认值即可。创建项目过程中会下载安装依赖的包，比较花费时间。
 
