@@ -25,7 +25,7 @@ title = 'Tour of Heroes';
 2) .打开app.component.html（组件的模版文件），将Angular CLI 自动生成的默认模板。改为下列 HTML 内容
 
 ```
-&lt;h1&gt;{% raw %}{{title}}{% endraw %}&lt;/h1&gt;
+<h1>{% raw %}{{title}}{% endraw %}</h1>
 ```
 
 注意：双花括号语法是 Angular 的插值绑定语法。这个插值绑定的意思是把组件的 title 属性的值绑定到 HTML中的 h1 标记中
