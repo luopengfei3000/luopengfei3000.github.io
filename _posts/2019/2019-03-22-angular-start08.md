@@ -153,12 +153,16 @@ getHeroes(): Observable<Hero[]> {
 打开 MessagesComponent，并且导入 MessageService。
 
 ```
-import { MessageService } from '../message.service';
+import { MessagesService } from '../messages.service';
 ```
 
-修改MessagesComponent构造函数，添加一个 public 的 messageService 属性。 Angular 将会在创建 MessagesComponent 的实例时 把 MessageService 的实例注入到这个属性中。
+修改MessagesComponent构造函数，添加一个 public 的 messageService 属性。Angular 将会在创建 MessagesComponent 的实例时把 MessageService 的实例注入到这个属性中。
 
 此处设messageService为public是因为要在messageService在模版文件中用到。
+
+```
+constructor(public messagesService: MessagesService) { }
+```
 
 <label style="color:red">**注意：⚠️Angular只会绑定公共的属性**</label>
 
