@@ -62,7 +62,7 @@ heroes = HEROES;
 打开 HeroesComponent 的模板文件(html)，并做如下修改：
 
 ```
-<h2>My Heroes</h2>
+&lt;h2&gt;My Heroes&lt;/h2&gt;
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
