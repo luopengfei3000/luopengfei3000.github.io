@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angular6学习笔记6：在页面中显示列表
+title: Angular6学习笔记5：在页面中显示列表(*ngFor/*ngIf)
 no-post-nav: true
 category: front-end
 tags: [front-end]
