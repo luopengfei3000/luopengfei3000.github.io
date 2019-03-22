@@ -15,7 +15,9 @@ ng generate component heroes
 ```
 执行完以后会提示：
 
-<div align=left>![](https://luopengfei3000.github.io/assets/images/2019/angular/2019-03-20-angular-start03/01.png)</div>
+<div style="align: left">
+<img src="https://luopengfei3000.github.io/assets/images/2019/angular/2019-03-20-angular-start03/01.png"/>
+</div>
 
 ```
 Microsoft Windows [版本 6.1.7601]
