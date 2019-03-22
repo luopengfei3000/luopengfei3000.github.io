@@ -85,8 +85,7 @@ CLI 在 src/app/messages中创建了组件文件，并且把 MessagesComponent �
 <app-heroes></app-heroes>
 <app-messages></app-messages>
 ```
-
-<app-messages> 是MessagesComponent的  selector: 'app-messages'
+<code>&lt;app-messages&gt;</code> 是MessagesComponent的  selector: 'app-messages'
 
 #### 3.创建 MessageService
 
