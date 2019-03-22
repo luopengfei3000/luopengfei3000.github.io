@@ -105,23 +105,4 @@ imports: [ RouterModule.forRoot(routes) ]
 
 在正常的应用中，是不可能然用户去地址栏输入某些地址的，而且用户也不可能知道需要输入什么，用户应该在点击某个按钮或者超级链接的时候，是应用跳转到相应的页面，使路由器自动的去跳转。
 
-在当前的应用中：添加一个&lt;nav&gt;元素，并在其中放一个链接&lt;a&gt;元素，当点击它时，就会触发一个到 HeroesComponent 的导航。 
-
-```
-&lt;h1&gt;{{title}}&lt;/h1&gt;
-<nav>
-  &lt;a routerLink="/heroes"&gt;Heroes&lt;/a&gt;
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
-```
-
-routerLink的值为 "/heroes"，路由器会用它来匹配出指向 HeroesComponent 的路由。 routerLink是RouterLink指令的选择器，它会把用户的点击转换为路由器的导航操作。 它是RouterModule中公开的另一个指令。
-
-保存，刷新浏览器，显示出了应用的标题和指向hero列表的链接，但并没有显示hero列表。
-
-点击这个链接。地址栏变成了 /heroes，并且显示出了hero列表。
-
-
-
-
+在当前的应用中：添加一个&lt;nav&gt;元素，并在其中放一个链接&lt;a&gt;元素，当点击它时，就会触发一个到 HeroesComponent 的导航。
