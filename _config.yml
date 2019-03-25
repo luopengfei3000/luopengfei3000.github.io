@@ -153,7 +153,7 @@ labels:
     label: 数据库
     target: _blank
 
- -
+  -
     href: /front-end.html
     label: 前端学习
     target: _blank
@@ -178,10 +178,10 @@ labels:
     ###label: It
     ###target: _blank
 
-  -
-    href: /python.html
-    label: Python
-    target: _blank
+  ###-
+    ###href: /python.html
+    ###label: Python
+    ###target: _blank
 
 
 # selected articles
