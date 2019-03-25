@@ -275,7 +275,7 @@ const routes: Routes = [
 
 ### 8.添加默认路由
 当应用启动时，浏览器的地址栏指向了网站的根路径。它没有匹配到任何现存路由，因此路由器也不会导航到任何地方。
-<router-outlet> 下方是空白的。要让应用自动导航到这个仪表盘，请把下列路由添加到 AppRoutingModule.Routes 数组中。
+&lt;router-outlet&gt; 下方是空白的。要让应用自动导航到这个仪表盘，请把下列路由添加到 AppRoutingModule.Routes 数组中。
 
 ```
 const routes: Routes = [
@@ -318,7 +318,7 @@ HeroDetailComponent 可以显示所选英雄的详情。 此刻，HeroDetailsCom
 3. 通过把一个“深链接”URL 粘贴到浏览器的地址栏中来指定要显示的英雄。
 
 ### 12.从 HeroesComponent 中删除英雄详情
-打开 HeroesComponent 的模板文件(heroes/heroes.component.html)，并从底部删除 <app-hero-detail> 元素。
+打开 HeroesComponent 的模板文件(heroes/heroes.component.html)，并从底部删除 &lt;app-hero-detail&gt; 元素。
 
 ### 13.添加英雄详情视图
 要导航到 id 为 11 的英雄的详情视图，类似于 ~/detail/11 的URL将是一个不错的 URL。
