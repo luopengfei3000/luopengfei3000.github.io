@@ -15,7 +15,7 @@ keywords: front-end,vue,angular,前端
 
         <ul id="posts-list">
             {% for post in site.posts %}
-                {% if post.category=='vue' or post.category=='angular' or post.keywords contains '前端' %}
+                {% if post.category=='angular' or post.category=='vue' or post.category=='front-end' or post.keywords contains '前端' %}
                 <li class="posts-list-item">
                     <div class="posts-content">
                         <span class="posts-list-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
