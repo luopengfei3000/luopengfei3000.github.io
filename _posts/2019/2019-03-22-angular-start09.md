@@ -128,11 +128,6 @@ routerLink的值为 "/heroes"，路由器会用它来匹配出指向 HeroesCompo
 ```
 ng generate component dashboard
 ```
-<pre class="has">
-    <code class="language-javascript">
-        ng generate component dashboard
-    </code>
-</pre>
 
 <label style="color:red">**⚠注意：CLI 生成了 DashboardComponent 的相关文件，并把它声明到 AppModule 中**</label>
 
