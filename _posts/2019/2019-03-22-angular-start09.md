@@ -9,7 +9,7 @@ excerpt : 路由
 
 在一个页面上写一个导航，导航栏中的每一个选项都对应一个页面。
 
- ## 1.添加 AppRoutingModule
+## 1.添加 AppRoutingModule
 
 ```
 E:\angular-workspace\new-angularaa>ng generate module app-routing --flat --module=app
@@ -43,7 +43,7 @@ export class AppRoutingModule {
 }
 ```
 
- ## 2.添加路由定义
+## 2.添加路由定义
 
 路由定义 会告诉路由器，当用户点击某个链接或者在浏览器地址栏中输入某个 URL 时，要显示哪个视图。
 
@@ -77,7 +77,7 @@ export class AppRoutingModule {
  }
 ```
 
- ## 3.RouterModule.forRoot()
+## 3.RouterModule.forRoot()
 此时想要路由生效，就必须先初始化路由，使路由器开始监听浏览器地址栏的变化。
 
 把 RouterModule 添加到 @NgModule.imports 数组中，并用 routes 来配置它。你只要调用 imports 数组中的 RouterModule.forRoot() 函数就行了
@@ -88,7 +88,7 @@ imports: [ RouterModule.forRoot(routes) ]
 
 关于forRoot：因为现在要在应用的顶级配置这个路由器。所以 forRoot() 方法会提供路由所需的服务提供商和指令，还会基于浏览器的当前 URL 执行首次导航。
 
- ## 4.添加路由出口 （RouterOutlet）
+## 4.添加路由出口 （RouterOutlet）
 打开 AppComponent 的模板，把 <app-heroes> 元素替换为 <router-outlet> 元素。
 
 ```
@@ -101,7 +101,7 @@ imports: [ RouterModule.forRoot(routes) ]
 &lt;router-outlet&gt;会告诉路由器要在哪里显示路由到的视图。<br/>
 保存，刷新浏览器，在localhost：4200后面加上/heroes 就会看到之前的界面了。
 
- ## 5.添加路由链接(routerLInk)
+## 5.添加路由链接(routerLInk)
 在正常的应用中，是不可能然用户去地址栏输入某些地址的，而且用户也不可能知道需要输入什么，用户应该在点击某个按钮或者超级链接的时候，是应用跳转到相应的页面，使路由器自动的去跳转。
 
 在当前的应用中：添加一个&lt;nav&gt;元素，并在其中放一个链接&lt;a&gt;元素，当点击它时，就会触发一个到 HeroesComponent 的导航。
@@ -121,7 +121,7 @@ routerLink的值为 "/heroes"，路由器会用它来匹配出指向 HeroesCompo
 
 点击这个链接。地址栏变成了 /heroes，并且显示出了hero列表。
 
- ## 6.添加仪表盘视图
+## 6.添加仪表盘视图
 在一个应用中，不可能只有一个页面，再有多个视图的情况下，才能使路由器更好的发挥其作用，使用 CLI 添加一个 DashboardComponent。
 
 ```
@@ -255,7 +255,7 @@ DashboardComponent类和 HeroesComponent 类很像。
 
 这个 getHeroes 函数把要显示的英雄的数量缩减为四个（第二、第三、第四、第五）。
 
- ## 7.添加仪表盘路由
+## 7.添加仪表盘路由
 如果需要导航到仪表盘的视图就需要在路由器中添加一个路由。把 DashboardComponent 导入到 AppRoutingModule 中。
 
 把一个指向 DashboardComponent 的路由添加到 AppRoutingModule.routes 数组中。
@@ -273,7 +273,7 @@ const routes: Routes = [
 ];
 ```
 
- ## 8.添加默认路由
+## 8.添加默认路由
 当应用启动时，浏览器的地址栏指向了网站的根路径。它没有匹配到任何现存路由，因此路由器也不会导航到任何地方。
 &lt;router-outlet&gt; 下方是空白的。要让应用自动导航到这个仪表盘，请把下列路由添加到 AppRoutingModule.Routes 数组中。
 
@@ -289,7 +289,7 @@ const routes: Routes = [
 
 浏览器刷新之后，路由器加载了 DashboardComponent，并且浏览器的地址栏会显示出 /dashboard 这个 URL。
 
- ## 9.把仪表盘链接添加到壳组件中
+## 9.把仪表盘链接添加到壳组件中
 在这个应用中应该允许用户通过点击页面顶部导航区的各个链接在 DashboardComponent 和 HeroesComponent 之间来回导航。
 
 把仪表盘的导航链接添加到壳组件 AppComponent 的模板中，就放在 Heroes 链接的前面。
@@ -306,7 +306,7 @@ const routes: Routes = [
 
 保存，刷新浏览器，你就能通过点击这些链接在这两个视图之间自由导航了。
 
- ## 10.导航到英雄详情
+## 10.导航到英雄详情
 HeroDetailComponent 可以显示所选英雄的详情。 此刻，HeroDetailsComponent 只能在 HeroesComponent 的底部看到
 
 用户应该能通过三种途径看到这些详情。
@@ -317,10 +317,10 @@ HeroDetailComponent 可以显示所选英雄的详情。 此刻，HeroDetailsCom
 
 3. 通过把一个“深链接”URL 粘贴到浏览器的地址栏中来指定要显示的英雄。
 
- ## 11.从 HeroesComponent 中删除英雄详情
+## 11.从 HeroesComponent 中删除英雄详情
 打开 HeroesComponent 的模板文件(heroes/heroes.component.html)，并从底部删除 &lt;app-hero-detail&gt; 元素。
 
- ## 12.添加英雄详情视图
+## 12.添加英雄详情视图
 要导航到 id 为 11 的英雄的详情视图，类似于 ~/detail/11 的URL将是一个不错的 URL。
 
 打开 AppRoutingModule 并导入 HeroDetailComponent。
@@ -342,7 +342,7 @@ const routes: Routes = [
 
 <label style="color:red">**⚠注意：path 中的冒号（:）表示 :id 是一个占位符，它表示某个特定英雄的 id**</label>
 
- ## 13.DashboardComponent 中的英雄链接
+## 13.DashboardComponent 中的英雄链接
 
 ```
 <h3>Top Heroes</h3>
@@ -356,7 +356,7 @@ const routes: Routes = [
 </div>
 ```
 
- ## 14.HeroesComponent 中的英雄链接
+## 14.HeroesComponent 中的英雄链接
 
 ```
 <h2>My Heroes</h2>
@@ -369,10 +369,10 @@ const routes: Routes = [
 </ul>
 ```
 
- ## 15.移除死代码
+## 15.移除死代码
 在这个过程中，会有一些之用到，但是现在用不到的代码，虽然代码量很少，但是最好还是将其删除。
 
- ## 16.支持路由的 HeroDetailComponent
+## 16.支持路由的 HeroDetailComponent
 当路由器会在响应形如 ~/detail/11 的 URL 时创建 HeroDetailComponent。
 
 HeroDetailComponent 需要从一种新的途径获取要显示的英雄。
@@ -407,7 +407,7 @@ constructor(
 
 <label style="color:blue">**location**</label> 是一个 Angular 的服务，用来与浏览器打交道。
 
- ## 17.从路由参数中提取 id
+## 17.从路由参数中提取 id
 
 ```
 ngOnInit(): void {
@@ -429,7 +429,7 @@ paramMap 是一个从 URL 中提取的路由参数值的字典。"id" 对应的�
 
 刷新浏览器，应用挂了。出现一个编译错误，因为 HeroService 没有一个名叫 getHero() 的方法。
 
- ## 18.添加 HeroService.getHero()
+## 18.添加 HeroService.getHero()
 
 ```
 getHero(id: number): Observable<Hero> {
@@ -446,7 +446,7 @@ getHero() 也有一个异步函数签名。它用 RxJS 的 of() 函数返回一�
 
 保存，刷新浏览器，应用又恢复正常了。你可以在仪表盘或英雄列表中点击一个英雄来导航到该英雄的详情视图。
 
- ## 19.回到原路
+## 19.回到原路
 
 通过点击浏览器的后退按钮，你可以回到英雄列表或仪表盘视图，这取决于你从哪里进入的详情视图。
 
@@ -468,7 +468,7 @@ goBack(): void {
 }
 ```
 
- ## 20.增加一些样式。
+## 20.增加一些样式。
 
 <label style="color:blue">**AppComponent**</label>
 
