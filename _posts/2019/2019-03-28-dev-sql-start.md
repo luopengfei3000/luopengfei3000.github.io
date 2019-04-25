@@ -1,3 +1,13 @@
+---
+layout: post
+title: 开发过程中sql学习记录
+no-post-nav: true
+category: front-end
+tags: [front-end]
+keywords: front-end
+excerpt : 开发过程中sql学习记录
+---
+
 ##### 根据图一可以看到查询出6条数据，第一条为树根节点数据，第二条为树二层节点数据，第三条外后为树的三层四层等节点数据
 
 ![](https://luopengfei3000.github.io/assets/images/2019/database/2019-03-28-dev-sql-start/01.png)
