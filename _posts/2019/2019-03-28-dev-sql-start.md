@@ -2,9 +2,9 @@
 layout: post
 title: 开发过程中sql学习记录
 no-post-nav: true
-category: front-end
+category: orcale
 tags: [front-end]
-keywords: front-end
+keywords: orcale
 excerpt : 开发过程中sql学习记录
 ---
 

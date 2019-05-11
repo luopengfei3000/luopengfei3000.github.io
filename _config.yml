@@ -163,6 +163,11 @@ labels:
     label: Idea
     target: _blank
 
+   -
+      href: /git.html
+      label: GIT
+      target: _blank
+
   ###-
     ###href: /docker.html
     ###label: Docker

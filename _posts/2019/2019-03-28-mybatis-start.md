@@ -2,9 +2,9 @@
 layout: post
 title: mybatis动态sql学习记录
 no-post-nav: true
-category: front-end
+category: mybatis
 tags: [front-end]
-keywords: front-end
+keywords: mybatis
 excerpt : mybatis动态sql学习记录
 ---
 

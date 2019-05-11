@@ -2,9 +2,9 @@
 layout: post
 title: 使用vscode将本地项目上传到github、从github克隆项目以及删除github上的某个文件夹
 no-post-nav: true
-category: front-end
+category: git
 tags: [front-end]
-keywords: front-end
+keywords: git
 excerpt : 使用vscode将本地项目上传到github、从github克隆项目以及删除github上的某个文件夹
 ---
 安装Git后，右键可以看到Git GUI和Git Bash两个功能
