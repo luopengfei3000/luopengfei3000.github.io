@@ -1,9 +1,9 @@
 ---
 layout: page
 title: GIT 系列文章
-titlebar: Idea
+titlebar: GIT
 subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; GIT 学习教程
-menu: Idea
+menu: GIT
 css: ['blog-page.css']
 permalink: /git
 keywords: git
