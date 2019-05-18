@@ -8,6 +8,8 @@ keywords: idea,git
 excerpt : 项目发布到Git远程仓库
 ---
 
+### 项目发布到Git远程仓库
+
 - 点击“VCS”->"Enable Version Control Integration"，将项目集成到版本控制器中
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-03-idea-project-release-git/01.png)
@@ -51,3 +53,13 @@ excerpt : 项目发布到Git远程仓库
 - 查看结果
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-03-idea-project-release-git/11.png)
+
+### 从github上获取项目
+
+- 在new -> Project from Verson Control -> GitHub。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-03-idea-project-release-git/12.png)
+
+- 选取想要clone的项目即可。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-03-idea-project-release-git/13.png)
