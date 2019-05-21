@@ -42,7 +42,7 @@ idea.cycle.buffer.size=disabled
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/04.png)
 
-#### 3、idea设置背景颜色为豆沙绿
+#### 3、IDEA 设置背景颜色为豆沙绿
 
 1. 打开idea Settings 选择 Editor——Color Scheme——General
 2. 右边选择Text——Default text
@@ -61,3 +61,28 @@ idea.cycle.buffer.size=disabled
 - Optimize imports on the fly：快速优化导入，优化的意思即自动帮助删除无用的导入。
 
 如图勾选，自动清除无效import。
+
+#### 5、IDEA 设置打开默认项目配置
+
+快捷键:ctrl+alt+s 打开setting
+
+1. 左侧树形菜单，选择Appearance & Behavior>System Settings，进入系统设置页面。
+
+2. 在Startup/Shutdown栏目处，去掉默认的勾选Reopen last project on startup（在启动的时候打开上次的项目），去掉勾选之后，点击确认。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/07.png)
+
+3. 关闭idea软件后，再次打开idea软件，这个时候没有直接进入项目工程，而是进入了欢迎页面，在欢迎页面左侧列表是历史打开的项目工程，可以选择一个打开，右侧可以创建新的工程或导入新的工程等。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/08.png)
+
+4. 在刚刚关闭idea软件的时候，你可能会注意到一个提示框，是确认关闭的提示窗口，防止误操作关闭了当前的工作空间。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/09.png)
+
+5. 可能有时不经意勾选了Do not ask me again。结果每次关闭都不会有确认提示了。一不小心就把当前的窗口误操作关闭了。这个开关就在上面设置的那个取消打开默认工程的配置的下方。将Confirm application exit选项再次勾选上，关闭确认提示就再次开启了。
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/10.png)
+
+
+
