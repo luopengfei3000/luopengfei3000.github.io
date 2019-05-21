@@ -16,11 +16,8 @@ Ctrl+Alt+s ---> tools ---> web browsers，进入到浏览器的设置项中
 
 我们可以看到浏览器默认采用的是default(系统默认的)，我们点击下拉菜单，选择定制路径，自己选择需要的浏览器
 
-<p align="center">
+<p align="left">
 	<img src="https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/01.png"  width="1288" height="732">
-	<p align="center">
-		<em>图片示例2</em>
-	</p>
 </p>
 
 浏览器地址可以从桌面浏览器图标中获取：
