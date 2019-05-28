@@ -47,7 +47,7 @@ function uploadManage(id,status){
 如果id传值为1则显示HelloWorld，反之。（比较的是String类型）
 
 ```
-<s:if test='<%= id.equals("1") %>’ >
+<c:if test='<%= id.equals("1") %>’ >
 	HelloWorld
-</s:if>
+</c:if>
 ```
