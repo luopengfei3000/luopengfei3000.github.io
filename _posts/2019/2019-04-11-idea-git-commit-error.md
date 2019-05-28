@@ -1,3 +1,13 @@
+---
+layout: post
+title: IntelliJ IDEA使用GIT push的时候提示"push to origin/master was rejected"解决方案
+no-post-nav: true
+category: idea
+tags: [idea]
+keywords: idea,git
+excerpt : IntelliJ IDEA使用GIT push的时候提示"push to origin/master was rejected"解决方案
+---
+
 ## IDEA使用GIT push的时候提示"push to origin/master was rejected"解决方案
 
 **push to origin/master was rejected错误解决方案**
