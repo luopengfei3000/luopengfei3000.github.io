@@ -60,7 +60,7 @@ class Student{
 }
 ```
 结果：
-``` java
+```
 fanshe.Student
 true
 true
@@ -163,7 +163,7 @@ public class Test_1 {
 }
 ```
 结果：
-``` java
+```
 *****************************所有公有构造方法*************
 public fanshe.Student(java.lang.String,int)
 public fanshe.Student(char)
@@ -259,7 +259,7 @@ public class Test_2 {
 ```
 
 结果：
-``` java
+```
 ************获取所有公有的字段********************
 public java.lang.String fanshe.Student_1.name
 ************获取所有的字段(包括私有、受保护、默认的)********************
@@ -354,7 +354,7 @@ public class Test_3 {
 }
 ```
 结果：
-``` java
+```
 ***************获取所有的”公有“方法*******************
 public void fanshe.Student_3.show1(java.lang.String)
 public final void java.lang.Object.wait() throws java.lang.InterruptedException
@@ -419,7 +419,7 @@ public class Test_4 {
 ```
 
 结果：
-``` java
+```
 main 方法执行了。。。
 ```
 
@@ -434,7 +434,7 @@ public class Student {
 ```
 
 配置文件，以txt为例（pro.txt）
-``` java
+```
 1 className = cn.fanshe.Student  
 2 methodName = show 
 ```
@@ -474,7 +474,7 @@ public class Demo {
 ```
 
 结果：
-``` java
+```
 is show()
 ```
 
@@ -489,7 +489,7 @@ public class Student2 {
  } 
 ```
 配置文件：
-``` java
+```
 className = cn.fanshe.Student2  
 methodName = show2 
 ```
@@ -526,7 +526,7 @@ public class Demo {
 }
 ```
 输出：
-``` java
+```
 aaa
 bbb
 100
