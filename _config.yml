@@ -18,7 +18,7 @@ favicon: dream.jpg
 repository: luopengfei3000/luopengfei3000.github.io
 github_url: https://github.com/luopengfei3000
 url: https://luopengfei3000.github.io
-enforce_ssl: luopengfei3000.com
+enforce_ssl: luopengfei3000.cn
 
 ## Gem
 plugins:
