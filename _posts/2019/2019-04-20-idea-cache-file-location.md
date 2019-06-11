@@ -32,6 +32,6 @@ excerpt : 修改 IntelliJ IDEA 缓存文件位置
 
 ```
 idea.config.path=D:/Idea2018/.IntelliJIdea/config
-# idea.system.path=D:/Idea2018/.IntelliJIdea/system
+idea.system.path=D:/Idea2018/.IntelliJIdea/system
 ```
 
