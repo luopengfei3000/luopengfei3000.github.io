@@ -64,23 +64,34 @@ idea改变控制台打印log限制的方法：
 
 快捷键 `ctrl+alt+s` 打开setting
 
-1. 左侧树形菜单，选择 `Appearance & Behavior>System Settings` 进入系统设置页面。
+- 左侧树形菜单，选择 `Appearance & Behavior>System Settings` 进入系统设置页面。
 
-2. 在Startup/Shutdown栏目处，去掉默认的勾选 `Reopen last project on startup`（在启动的时候打开上次的项目），去掉勾选之后，点击确认。
+- 在Startup/Shutdown栏目处，去掉默认的勾选 `Reopen last project on startup`（在启动的时候打开上次的项目），去掉勾选之后，点击确认。
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/07.png)
 
-3. 关闭idea软件后，再次打开idea软件，这个时候没有直接进入项目工程，而是进入了欢迎页面，在欢迎页面左侧列表是历史打开的项目工程，可以选择一个打开，右侧可以创建新的工程或导入新的工程等。
+- 关闭idea软件后，再次打开idea软件，这个时候没有直接进入项目工程，而是进入了欢迎页面，在欢迎页面左侧列表是历史打开的项目工程，可以选择一个打开，右侧可以创建新的工程或导入新的工程等。
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/08.png)
 
-4. 在刚刚关闭idea软件的时候，你可能会注意到一个提示框，是确认关闭的提示窗口，防止误操作关闭了当前的工作空间。
+- 在刚刚关闭idea软件的时候，你可能会注意到一个提示框，是确认关闭的提示窗口，防止误操作关闭了当前的工作空间。
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/09.png)
 
-5. 可能有时不经意勾选了 `Do not ask me again`。结果每次关闭都不会有确认提示了。一不小心就把当前的窗口误操作关闭了。这个开关就在上面设置的那个取消打开默认工程的配置的下方。将 `Confirm application exit` 选项再次勾选上，关闭确认提示就再次开启了。
+- 可能有时不经意勾选了 `Do not ask me again`。结果每次关闭都不会有确认提示了。一不小心就把当前的窗口误操作关闭了。这个开关就在上面设置的那个取消打开默认工程的配置的下方。将 `Confirm application exit` 选项再次勾选上，关闭确认提示就再次开启了。
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/10.png)
 
 
+### 6、idea设置方法或常量字段上浮显示对应的注释内容
+      
+- 快捷键 `ctrl+alt+s` 打开setting
+
+- 如图勾选并设置显示延迟时间
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/11.png)
+
+- 将鼠标放置方法上面显示如下
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/12.png)
 
