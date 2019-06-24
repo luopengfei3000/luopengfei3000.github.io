@@ -1,13 +1,14 @@
 ---
 layout: post
-title: 开发过程中sql学习记录
+title: 开发过程中Orcale学习记录
 no-post-nav: true
 category: orcale
 tags: [front-end]
 keywords: orcale
-excerpt : 开发过程中sql学习记录
+excerpt : 开发过程中Orcale学习记录
 ---
 
+### Orcale sql学习一
 ##### 根据图一可以看到查询出6条数据，第一条为树根节点数据，第二条为树二层节点数据，第三条外后为树的三层四层等节点数据
 
 ![](https://luopengfei3000.github.io/assets/images/2019/database/2019-03-28-dev-sql-start/01.png)
@@ -103,7 +104,131 @@ decode(nums,0,0,round(finished / nums * 100, 2))
 - decode(除数，0，显示0%，不为零的正常表达式）代替原来那个有可能出0除报错的表达式
 - 如果 nums 除数为0，算法报错，因此当除数为0时显示0，反之计算round(finished / nums * 100, 2)
 
+### Orcale sql学习二
 
+实例一：
+
+如下表格数据：
+
+| str_year(年)| str_quarter(季度)| oversize_quality(超差数量)|
+|:-------:|:-------:|:-------:|
+| 2015  | 1  | 22  |
+| 2015  | 2  | 100 |
+| 2015  | 3   | 200 |
+| 2015 | 4   | 222 |
+
+通过sql查询如下形式：
+
+| str_year(年)|one_oversize(一季度超差数量)|two_oversize(二季度超差数量)|three_oversize(三季度超差数量)|four_oversize(四季度超差数量)|
+|:-------:|:-------:|:-------:|:-------:|:-------:|
+| 2015  | 22  | 100  | 200 | 222 |
+
+分析：此查询使用到oracle的行转列函数(pivot)
+
+```
+with mcs_data as
+ (select t1.str_year,
+          t1.str_quarter,
+          t1.oversize_quality
+    from MCS_PRODUCT_OVERSIZE_COUNT t1
+    where t1.str_year = '2015') --此查询查到上图表格一数据
+
+select *
+  from mcs_data pivot(sum(oversize_quality) as oversize for str_quarter in(1 as one,
+                                                                           2 as two,
+                                                                           3 as three,
+                                                                           4 as four))
+ order by str_year
+```
+
+实例二：
+
+如下表格数据：
+
+| str_year(年)| str_quarter(季度)| oversize_quality(超差数量)| scrapped_quality(报废数量)|
+|:-------:|:-------:|:-------:|:-------:|
+| 2015  | 1  | 22  | 88 |
+| 2015  | 2  | 100 | 200|
+| 2015  | 3   | 200 | 100|
+| 2015 | 4   | 222 | 111|
+
+通过sql查询如下形式：
+
+| str_year(年)|one_oversize(一季度超差数量)|one_scrapped(一季度报废数量)|two_oversize(二季度超差数量)|two_scrapped(二季度报废数量)|three_oversize(三季度超差数量)scrapped|three_scrapped(三季度报废数量)|four_oversize(四季度超差数量)scrapped|four_scrapped(四季度报废数量)|
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+| 2015  | 22  | 88  | 100 | 200 |200  | 100  | 222| 111 |
+
+分析：此查询使用到oracle的行转列函数(pivot)
+
+```
+with mcs_data as
+ (select t1.str_year,
+          t1.str_quarter,
+          t1.oversize_quality,
+          t1.scrapped_quality
+    from MCS_PRODUCT_OVERSIZE_COUNT t1
+    where t1.str_year = '2015')
+
+select *
+  from mcs_data pivot(sum(oversize_quality) as oversize,sum(scrapped_quality) as scrapped for str_quarter in(1 as one,
+                                                                                                             2 as two,
+                                                                                                             3 as three,
+                                                                                                             4 as four))
+ order by str_year
+```
+
+实例三：
+
+如下表格数据：
+
+|str_year(年)|str_quarter(季度)|mds_item_id(型号)|target_value(目标值)|oversize_quality(超差数量)|scrapped_quality(报废数量)|count_qty(总数量)|
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|2015|1|8a58cbe66ae960a0016ae97b70960402|555|22|88|110|
+|2015|2|8a58cbe66ae960a0016ae97b70960402|200|100|200|300|
+|2015|3|8a58cbe66ae960a0016ae97b70960402|888|200|100|300|
+|2015|4|8a58cbe66ae960a0016ae97b70960402|999|222|111|333|
+|2016|2|8a58cbe66ae960a0016ae97b70960402|500|200|100|300|
+|2019|1|8a58cbe66ae960a0016ae97b70960402|100|1|1|2|
+|2019|1|8a58cbe66ae960a0016ae97b70960402|412|2|2|4|
+|2019|1|8a58cbe66ae960a0016ae97b70960402|951|11|10|21|
+|2019|1|8a58cbe66ae960a0016ae97a614303fe|600|1|1|2|
+|2019|4|8a58cbe66ae960a0016ae97b70960402|300|1|1|2|
+|2022|1|8a58cbe66ae960a0016ae97b70960402|500|66666|9999|76665|
+|2019|2|8a58cbe66ae960a0016ae97b70960402|852|8888|9999|18887|
+
+通过sql查询如下形式：
+
+![](https://luopengfei3000.github.io/assets/images/2019/database/2019-03-28-dev-sql-start/03.png)
+
+分析：此查询使用到oracle的行转列函数(pivot)
+
+```
+with data_list as
+ (select t.str_year,
+         t.str_quarter,
+         t.mds_item_id,
+         mi.item_name mds_item_name,
+         (select sum(p.target_value) target_value
+            from MCS_PRODUCT_OVERSIZE_COUNT p
+           where p.str_year = t.str_year
+             and p.mds_item_id = t.mds_item_id
+           group by p.str_year, p.mds_item_id) target_value,
+         sum(t.oversize_quality) as oversize_quality,
+         sum(t.scrapped_quality) as scrapped_quality,
+         sum(t.count_qty) as count_qty
+    from MCS_PRODUCT_OVERSIZE_COUNT t
+    left join mds_item mi
+      on t.mds_item_id = mi.id
+   group by t.str_year, t.str_quarter, t.mds_item_id, mi.item_name)
+
+select *
+  from data_list pivot(sum(oversize_quality) as oversize, sum(scrapped_quality) as scrapped, sum(count_qty) as count_qty for str_quarter in(1 as one,
+                                                                                                                                            2 as two,
+                                                                                                                                            3 as three,
+                                                                                                                                            4 as four))
+--where条件
+ order by str_year
+```
 
     
   
