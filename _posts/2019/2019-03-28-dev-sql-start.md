@@ -229,6 +229,44 @@ select *
 --where条件
  order by str_year
 ```
+### Orcale sql学习三
+
+如下表格数据：
+
+| parent_register_id| attach_size| attach_name|
+|:-------:|:-------:|:-------:|
+| 4028b88164a73bf70164aca80c5906a4  | 110011  | 测试1.docx  |
+| 8a58cbee65137055016513730536014c  | 10023 | 20180802.txt |
+| 4028b88164a73bf70164aca80c5906a4  | 11056   | 测试2.docx |
+
+通过sql查询如下形式：
+
+| parent_register_id|ATTACH_MESAGE|
+|:-------:|:-------:|
+| 4028b88164a73bf70164aca80c5906a4  | 110011,测试1.docx;11056,测试2.docx  | 
+| 8a58cbee65137055016513730536014c  | 10023,20180802.txt  | 
+
+分析：此查询使用到oracle的函数LISTAGG('要转化的列','分隔符')
+
+方式一：
+
+1、使用listagg() + group by
+
+```
+SELECT s.parent_register_id,
+       LISTAGG(s.attach_size || ',' || s.attach_name, ';') within group(order by s.creation_date) AS ATTACH_MESAGE
+  FROM Sys_Attachment s
+ WHERE S.parent_table_id = 'GK_PROBLEM_MANAGE_FEEDBACK'
+ GROUP BY s.parent_register_id;
+```
+2、使用listagg() + over(partition by ?)
+
+```
+SELECT s.parent_register_id,
+    LISTAGG(s.attach_size || ',' || s.attach_name, ';') within group(order by s.creation_date) over(partition by s.parent_register_id) AS ATTACH_MESAGE
+FROM Sys_Attachment s
+WHERE S.parent_table_id = 'GK_PROBLEM_MANAGE_FEEDBACK'
+```
 
     
   
