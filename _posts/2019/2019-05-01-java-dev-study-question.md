@@ -141,7 +141,51 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 private Long gNo;
 ```
 
-#### 3.悲观锁和乐观锁的区别，怎么实现
+#### 4.将sql传入mapper中查询改进
+
+在开发过程中看到如下代码：
+``` java
+//Service:
+public List<Map<String, Object>> getSysDeptList(String deptId, String type) {
+    String sql = "";
+    if ("init".equals(type)) {
+        sql = "SELECT a.id,a.dept_name FROM sys_dept_v a\n" + "WHERE EXISTS (\n" + "SELECT 1\n" + "FROM Sys_Dept t\n" + "WHERE t.parent_dept_id = '-1'\n" + "AND\n"
+                + "a.parent_dept_id = t.id\n" + ")\n" + "START WITH a.id = '" + deptId + "'\n" + "CONNECT BY PRIOR a.parent_dept_id = a.id";
+
+    } else {
+        sql = "SELECT a.id,a.dept_name,(SELECT COUNT(ID) FROM sys_dept b WHERE b.parent_dept_id = a.id) AS c_sub FROM sys_dept_v a where a.parent_dept_id = '" + deptId
+                + "' ORDER BY a.order_by";
+    }
+    return dao.getDataBySql(sql);
+}
+//Mapper:
+<!-- 查询 SQL -->
+<select id="getDataBySql" parameterType="java.util.Map" resultType="java.util.Map">
+    ${sql}
+</select>
+```
+通过JdbcTemplate实现：
+``` java
+@Autowired
+private JdbcTemplate jdbcTemplate;
+
+public List<Map<String, Object>> getSysDeptList(String deptId, String type) {
+		String sql = "";
+		if ("init".equals(type)) {
+			sql = "SELECT a.id,a.dept_name FROM sys_dept_v a\n" + "WHERE EXISTS (\n" + "SELECT 1\n" + "FROM Sys_Dept t\n" + "WHERE t.parent_dept_id = '-1'\n" + "AND\n"
+					+ "a.parent_dept_id = t.id\n" + ")\n" + "START WITH a.id = '" + deptId + "'\n" + "CONNECT BY PRIOR a.parent_dept_id = a.id";
+
+		} else {
+			sql = "SELECT a.id,a.dept_name,(SELECT COUNT(ID) FROM sys_dept b WHERE b.parent_dept_id = a.id) AS c_sub FROM sys_dept_v a where a.parent_dept_id = '" + deptId
+					+ "' ORDER BY a.order_by";
+		}
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		return list;
+	}
+```
+
+
+#### 4.悲观锁和乐观锁的区别，怎么实现
 
 悲观锁：一段执行逻辑加上悲观锁,不同线程同时执行时,只能有一个线程执行,其他的线程在入口处等待,直到锁被释放。
 
