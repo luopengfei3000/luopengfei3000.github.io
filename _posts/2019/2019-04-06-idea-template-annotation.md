@@ -42,7 +42,7 @@ excerpt : IntelliJ IDEA 之 注释模板配置
 
 点击左下角OK按钮
 
-#### 2、配置方法注释模板
+#### 2、配置方法注释模板(需在方法内 `/*` )
 选择自己新建的组名称,点击左侧+号，创建模板，如下图
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-06-idea-template-annotation/06.png)
@@ -103,3 +103,51 @@ return result", methodParameters())
 把这个添加进去，但是还要注意一点：
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-06-idea-template-annotation/11.png)
+
+#### 3、配置方法注释模板(需在方法外 `/*`) 推荐使用
+
+打开File --> Settings设置面板-->Editor-->Live Templates，
+
+如配置方法注释模板2，选择创建模板，如图：
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-06-idea-template-annotation/12.png)
+
+- 第二步在Abbreviation输入：`*` （此处可输入随意字符，比如`mt`,使用注释时需 `/mt`）
+- 第三步在Template text输入：
+```
+**
+ * $description$$params$
+ * @return $returns$ 
+ * @create $date$ $time$
+ */
+```
+- 第四步点击Edit variables配置如下图：
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-06-idea-template-annotation/13.png)
+
+
+在 `params` 的 `Default value` 中复制如下代码，其他配置如图即可(`Expression`可通过选择得到)
+```
+groovyScript(
+	"
+		def result = '';
+		def params = \"${_1}\".replaceAll(
+			'[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); 
+		if (params.size() > 1) {
+			result +='\\n * @param ' + params[0] + ' \\n';
+			for(i = 1; i < params.size(); i++) {
+				result += ' * @param ' + params[i] + 
+					((i < params.size() - 1) ? ' \\n' : '');
+			};
+		}else if (params.size()==1) {
+			if (params[0] != '') {
+				result+='\\n * @param ' +params[0] + ' ';	
+			}
+		}else {
+			result += params[0] + ' ';
+		};
+		return result
+	",
+	methodParameters()
+	)
+```
