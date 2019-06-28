@@ -183,9 +183,27 @@ public List<Map<String, Object>> getSysDeptList(String deptId, String type) {
 		return list;
 	}
 ```
+#### 5.Oracle DBLINK 简单使用
 
+oracle在进行跨库访问时，可以通过创建dblink实现。
 
-#### 4.悲观锁和乐观锁的区别，怎么实现
+创建`database link`,通过`pl/sql developer`图形化创建，通过`Database Links` ---> 右键 ---> new ---> 创建Database Link界面
+
+![](https://luopengfei3000.github.io/assets/images/2019/java/2019-05-01-java-dev-study-question/01.png)
+
+如上图：Owner:当前数据库登录名，Name:随意取个名称，Username:连接数据库的登录名，Password:连接数据库的密码，Database:连接数据库的信息
+```
+Database:
+方式一：
+(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=11.218.99.32)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME =ZAE)))
+方式二：
+11.218.99.32:1521/ZAE
+```
+`pl/sql developer` 中使用如下：`select * from test_table@iqs_link t1`
+
+`mapper` 中使用如下：`<![CDATA[ select * from test_table@iqs_link t1 ]]>`
+
+#### 6.悲观锁和乐观锁的区别，怎么实现
 
 悲观锁：一段执行逻辑加上悲观锁,不同线程同时执行时,只能有一个线程执行,其他的线程在入口处等待,直到锁被释放。
 
