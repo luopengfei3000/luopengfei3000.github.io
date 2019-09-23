@@ -139,6 +139,8 @@ excerpt : java8对集合排序/去重/分组
     //根据名称分组
     Map<String, List<Student>> groupName = list.stream().collect(Collectors.groupingBy(Student::getName));
     System.out.println(groupName.toString());
+    //根据名称分组求年龄之和
+    Map<String, Double> collect = list.stream().collect(Collectors.groupingBy(Student::getName, Collectors.summingDouble(Student::getAge)));
 ```
 
 ``` java

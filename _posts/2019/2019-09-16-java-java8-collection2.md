@@ -94,6 +94,12 @@ excerpt : java8集合操作
     //Optional allsum = list.stream().map(Student::getAge).reduce((x, y) -> x + y);
     Optional allsum = list.stream().map(Student::getAge).reduce(Integer::sum);
     System.out.println("计算list中年龄之和"+ allsum.get());
+    方式二：
+    age若为一般类型Double
+    此方式保证age属性全部有值,不可为null
+    //double ages = list.stream().mapToDouble(Student::getAge).sum();
+    此方式age属性可以为null
+    double ages = list.stream().mapToDouble(n -> n.getAge() == null ? 0d : n.getAge()).sum();
     
     计算list中大于16的人的年龄之和
     Optional sum = list.stream().filter(x -> x.getAge() > 16).map(x -> x.getAge()).reduce((x, y) -> x + y);
