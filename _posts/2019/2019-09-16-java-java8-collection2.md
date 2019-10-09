@@ -97,10 +97,22 @@ excerpt : java8集合操作
     方式二：
     age若为一般类型Double
     此方式保证age属性全部有值,不可为null
-    //double ages = list.stream().mapToDouble(Student::getAge).sum();
+    //Integer ages = list.stream().mapToInt(Student::getAge).sum();
     此方式age属性可以为null
-    double ages = list.stream().mapToDouble(n -> n.getAge() == null ? 0d : n.getAge()).sum();
+    Integer ages = list.stream().mapToInt(n -> n.getAge() == null ? 0 : n.getAge()).sum();
+    方式三：
+    Integer reduce = list.stream().parallel().map(Student::getAge).reduce(0, Integer::sum);
+    Integer reduce = list.stream().parallel().map(n -> n.getAge() == null ? 0 : n.getAge()).reduce(0, Integer::sum);
     
+    查看每一个学生占的分值比重
+    Integer ages = list.stream().mapToInt(Student::getAge).sum();
+    List<String> collect = list.stream()
+                .mapToDouble(s -> s.getGrade() % grades)
+                .mapToLong(weight -> (long) (weight * 1))
+                .mapToObj(percentage -> percentage + "%")
+                .collect(Collectors.toList());
+     System.out.println("查看每一个学生占的分值比重"+ collect.toString());
+     
     计算list中大于16的人的年龄之和
     Optional sum = list.stream().filter(x -> x.getAge() > 16).map(x -> x.getAge()).reduce((x, y) -> x + y);
     System.out.println("计算list中大于16的人的年龄之和"+sum.get());
@@ -131,6 +143,7 @@ excerpt : java8集合操作
     每个人的名字返回一个list集合:[aa, cc, bb, ff, ss, kk, nn, rr, ww, pp, pp]
     绩和年龄之和返回一个list集合:[100, 116, 99, 64, 108, 87, 71, 111, 98, 107, 78]
     计算list中年龄之和196
+    查看每一个学生占的分值比重[88%, 99%, 85%, 52%, 92%, 74%, 53%, 91%, 79%, 86%, 44%]
     计算list中大于16的人的年龄之和129
     list中大于16的人的年龄各减1再计算他们的年龄之和:123
     返回最大年龄:34

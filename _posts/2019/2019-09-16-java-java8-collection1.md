@@ -158,6 +158,32 @@ excerpt : java8对集合排序/去重/分组
 }
 ```
 
+#### list集合分组求和
+
+``` java
+    /*
+    list.add(new User(4.5, "aa"));
+    list.add(new User(3.5, "aa"));
+    list.add(new User(2.0, "aa"));
+    list.add(new User(1.4, "cc"));
+    list.add(new User(2.6, "cc"));
+    list.add(new User(3.0, "bb"));
+    list.add(new User(3.0, "bb"));
+    list.add(new User(3.0, "bb"));
+    */
+    List<User> userGradeList = User.generate();
+    Map<String, Double> userGradeMap = new HashMap<String, Double>();
+    userGradeList.forEach(userGrade -> userGradeMap.merge(
+            userGrade.getName(),
+            userGrade.getGrade(),
+            Double::sum));
+    System.out.println(userGradeMap.toString());
+```
+
+``` java
+{bb=9.0, cc=4.0, aa=10.0}
+```
+
 #### Map集合排序
 
 ``` java
