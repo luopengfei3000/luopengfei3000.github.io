@@ -95,3 +95,33 @@ idea改变控制台打印log限制的方法：
 
 ![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/12.png)
 
+### 7、idea设置行号显示
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/13.png)
+
+### 8、idea设置忽略大小写开关
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/14.png)
+
+### 9、idea设置自带的Terminal为Git Bash
+
+Windows环境下的Terminal是CMD的，如果电脑上有git的话，我更加喜欢将Terminal改为Git Bash，修改方式如下：
+
+路径：Setting ——> Tools ——> Terminal 
+
+修改Shell path 为git的bash.exe的路径即可；
+
+![](https://luopengfei3000.github.io/assets/images/2019/idea/2019-04-05-idea-dev-setting/15.png)
+
+修改后的Terminal如果内容里面有中文是会显示乱码的。
+
+解决方式：在Git的安装目录的etc目录下，如：D:\Program Files\Git\etc，找到bash.bashrc文件在其最后面添加以下代码，然后重新启动IDEA即可；
+
+``` 
+解决中文乱码
+export LANG="zh_CN.UTF-8"
+export LC_ALL="zh_CN.UTF-8"
+```
+
+
+
