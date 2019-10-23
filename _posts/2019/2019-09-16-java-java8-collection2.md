@@ -71,6 +71,7 @@ excerpt : java8集合操作
     System.out.println("list中的Student年龄小于15的降序排列:"+student2.toString());
     
     计算list中年龄小于16的元素的个数
+    统计功能，一般都是结合filter使用，因为先筛选出我们需要的再统计即可
     long count = list.stream().filter(x -> x.getAge() < 16).count();
     System.out.println("ist中年龄小于16的元素的个数:"+count);
     
@@ -83,6 +84,11 @@ excerpt : java8集合操作
     获取List中每个人的名字,返回成一个List
     List<String> collect = list.stream().map(x -> x.getName()).collect(Collectors.toList());
     System.out.println("每个人的名字返回一个list集合:"+collect.toString());
+    扩展：返回的name集合拼接成字符串
+    String collect = students.stream().map(item -> item.getName()).collect(Collectors.joining(","));//以,拼接name
+    结果：张三,李四，王五
+    String names = students.stream().map(Student::getName).collect(Collectors.joining(",","[","]"));//第一个是分界符，第二个是前缀符，第三个是结束符
+    结果：[张三,李四，王五]
     
     成绩和年龄之和返回一个list集合
     List<Integer> integers = list.stream().map(student -> {
@@ -121,18 +127,38 @@ excerpt : java8集合操作
     int sum2 = list.stream().filter(x -> x.getAge() > 16).map(x -> x.getAge() - 1).reduce(0, (x, y) -> x + y);
     System.out.println("list中大于16的人的年龄各减1再计算他们的年龄之和:"+sum2);
     
-    返回最大年龄和最小年龄
+    方式一：返回最大年龄和最小年龄
     Optional o1 = list.stream().map(x -> x.getAge()).max((x, y) -> Integer.compare(x, y));
     System.out.println("返回最大年龄:"+o1.get());
     o1 = list.stream().map(x -> x.getAge()).max((x, y) -> Integer.compare(y, x));
     System.out.println("返回最小年龄:"+o1.get());
     
-    计算最大年龄和最小年龄
+    方式二：集合中计算最大年龄和最小年龄
     //Optional o2 = list.stream().map(x -> x.getAge()).reduce((x, y) -> Integer.max(x, y));
     Optional o2 = list.stream().map(x -> x.getAge()).reduce(Integer::max);
     System.out.println("返回最大年龄:"+o2.get());
     o2 = list.stream().map(x -> x.getAge()).reduce(Integer::min);// 使用了Integer中的min方法
     System.out.print("返回最小年龄:"+o2.get());
+    
+    方式三：集合中计算最大年龄和最小年龄
+    max、min接收一个Comparator（例子中使用java8自带的静态函数，只需要传进需要比较值即可。）并且返回一个Optional对象，该对象是java8新增的类，专门为了防止null引发的空指针异常。
+    可以使用max.isPresent()判断是否有值；可以使用max.orElse(new Student())，当值为null时就使用给定值；也可以使用max.orElseGet(() -> new Student());这需要传入一个Supplier的lambda表达式。
+     
+    Optional<Student> max = list.stream().max(Comparator.comparing(x -> x.getAge()));
+    Optional<Student> min = list.stream().min(Comparator.comparing(x -> x.getAge()));
+    //判断是否有值
+    if (max.isPresent()) {//集合不为空，里面有Student对象
+        System.out.println("返回最大年龄:"+max.get());
+    }else{//集合为空
+        
+    }
+    
+    if (min.isPresent()) {
+        System.out.println("返回最小年龄:"+min.get());
+    }
+    
+    获取list集合中平均年龄
+    Double avgAge = list.stream().collect(averagingInt(Student::getAge));
 ```
 
 ``` java
@@ -146,6 +172,8 @@ excerpt : java8集合操作
     查看每一个学生占的分值比重[88%, 99%, 85%, 52%, 92%, 74%, 53%, 91%, 79%, 86%, 44%]
     计算list中大于16的人的年龄之和129
     list中大于16的人的年龄各减1再计算他们的年龄之和:123
+    返回最大年龄:34
+    返回最小年龄:12
     返回最大年龄:34
     返回最小年龄:12
     返回最大年龄:34

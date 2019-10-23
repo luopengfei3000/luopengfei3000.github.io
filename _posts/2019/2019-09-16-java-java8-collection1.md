@@ -184,6 +184,32 @@ excerpt : java8对集合排序/去重/分组
 {bb=9.0, cc=4.0, aa=10.0}
 ```
 
+#### list两个集合合并
+
+``` java
+   List<Student> students = new ArrayList<>(3);
+   students.add(new Student("路飞", 0));
+   students.add(new Student("路飞", 22));
+   students.add(new Student("红发", 40));
+   students.add(new Student("白胡子", 50, 185));
+
+   List<Student> students1 = new ArrayList<>(2);
+   students1.add(new Student("艾斯", 25, 183));
+   students1.add(new Student("雷利", 48, 176));
+
+   List<Student> studentList =  Stream.of(students,students1).flatMap(students2 -> students2.stream()).collect(Collectors.toList());
+
+   System.out.println(studentList.toString());
+```
+
+``` java
+[Student{age=22, grade=0, name='路飞'}, 
+Student{age=40, grade=0, name='红发'}, 
+Student{age=50, grade=185, name='白胡子'}, 
+Student{age=25, grade=183, name='艾斯'}, 
+Student{age=48, grade=176, name='雷利'}]
+```
+
 #### Map集合排序
 
 ``` java
