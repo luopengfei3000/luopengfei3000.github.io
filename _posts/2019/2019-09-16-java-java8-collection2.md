@@ -60,30 +60,42 @@ excerpt : java8集合操作
 
 ##### list对象集合操作
 ``` java
-    将list中的Student按年龄大于等于15的,升序排列,打印
+
+    filter使用（过滤）
+    将list中的Student按年龄大于等于15的,升序排列
     调用compare中的排序方法comparing自然排序
     List<Student> student1 = list.stream().filter(x -> x.getAge() >= 20).sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
     System.out.println("list中的Student按年龄大于等于20的升序排列:"+student1.toString());
     
-    将list中的Student年龄小于15的,降序排列打印
+    将list中的Student年龄小于15的,降序排列
     调用Integer中的compare方法
     List<Student> student2 = list.stream().filter(x -> x.getAge() < 14).sorted((s1, s2) -> Integer.compare(s2.getAge(), s1.getAge())).collect(Collectors.toList());
     System.out.println("list中的Student年龄小于15的降序排列:"+student2.toString());
+    
+    将list中的Student年龄小于15的,并且生日降序排列
+    List<Student> student3 = resultList.stream().filter(x -> x.getAge() < 14).
+                        sorted(Comparator.comparing(Student::getBirthday,(s1, s2) -> {
+                            return s2.compareTo(s1);
+                        })).collect(Collectors.toList());
     
     计算list中年龄小于16的元素的个数
     统计功能，一般都是结合filter使用，因为先筛选出我们需要的再统计即可
     long count = list.stream().filter(x -> x.getAge() < 16).count();
     System.out.println("ist中年龄小于16的元素的个数:"+count);
     
-    提取单列数据集合
-    map将对象转换为其他对象
+    map使用提取单列数据集合（map将对象转换为其他对象）
     取出每个人的年龄,加1后返回成List
     List<Integer> list2 = list.stream().map(x -> x.getAge()).map(i -> i + 1).collect(Collectors.toList());
     System.out.println("每个人的年龄加1后返回成List:"+list2.toString());
     
     获取List中每个人的名字,返回成一个List
     List<String> collect = list.stream().map(x -> x.getName()).collect(Collectors.toList());
+    List<String> collect2 = list.stream().map(Student::getName).collect(Collectors.toList());
+    List<String> collect3 = list.stream().map(item -> {
+    	return item.getName();
+    }).collect(Collectors.toList());
     System.out.println("每个人的名字返回一个list集合:"+collect.toString());
+    
     扩展：返回的name集合拼接成字符串
     String collect = students.stream().map(item -> item.getName()).collect(Collectors.joining(","));//以,拼接name
     结果：张三,李四，王五
@@ -101,7 +113,7 @@ excerpt : java8集合操作
     Optional allsum = list.stream().map(Student::getAge).reduce(Integer::sum);
     System.out.println("计算list中年龄之和"+ allsum.get());
     方式二：
-    age若为一般类型Double
+    age若为一般类型Integer
     此方式保证age属性全部有值,不可为null
     //Integer ages = list.stream().mapToInt(Student::getAge).sum();
     此方式age属性可以为null
