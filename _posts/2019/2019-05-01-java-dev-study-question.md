@@ -203,7 +203,27 @@ Database:
 
 `mapper` 中使用如下：`<![CDATA[ select * from test_table@iqs_link t1 ]]>`
 
-#### 6.悲观锁和乐观锁的区别，怎么实现
+#### 6.mybatis>mapper中直接返回boolean型数据
+
+通常情况下，我们一般会在service中进行真与假的逻辑判断，比如先取出一个对象，根据对象是否为空来判断我们的真假逻辑，这部分可以移动到mapper中进行处理。
+
+示例，我们做一个昵称是否存在的验证：
+
+``` java
+<select id="ifExist" parameterType="string" resultType="boolean">
+    <![CDATA[ select count(id) from user where name = #{name} ]]>
+</select> 
+```
+
+mybatis会根据记录数返回值来进行数据的转换
+
+1：true 
+
+0：fasle
+
+注意：如果count>1,那么返回的将还是false，所以我们要确保在数据库中，我们要确保数据唯一性。
+
+#### 7.悲观锁和乐观锁的区别，怎么实现
 
 悲观锁：一段执行逻辑加上悲观锁,不同线程同时执行时,只能有一个线程执行,其他的线程在入口处等待,直到锁被释放。
 
