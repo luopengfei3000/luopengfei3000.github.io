@@ -212,6 +212,7 @@ Student{age=48, grade=176, name='雷利'}]
 
 #### Map集合排序
 
+##### 方式一：
 ``` java
     Map<Integer, String> map = new HashMap<>();
     map.put(15, "Mahesh");
@@ -247,4 +248,59 @@ Student{age=48, grade=176, name='雷利'}]
     map = map.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
     System.out.println(map.toString());
+```
+
+##### 方式二：
+``` java
+public class Java8future {
+
+    public static void main(String[] args) {
+        Map<String, Integer> map = ImmutableMap.of("gq", 7, "aa", 9, "zs", 66, "vv", 3);
+        System.out.println("原始的map：" + map);
+        System.out.println("key降序：" + sortByKey(map, true, 2));
+        System.out.println("key升序：" + sortByKey(map, false, 2));
+        System.out.println("value降序：" + sortByValue(map, true, 2));
+        System.out.println("value升序：" + sortByValue(map, false, 2));
+    }
+
+    /**
+     * Sort map by value
+     *
+     * @param map map source
+     * @param isDesc 是否降序，true：降序，false：升序
+     * @param limit 取前几条
+     * @return 已排序map
+     */
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, boolean isDesc, int limit) {
+        Map<K, V> result = Maps.newLinkedHashMap();
+        if (isDesc) {
+            map.entrySet().stream().sorted(Map.Entry.<K, V>comparingByValue().reversed()).limit(limit)
+                    .forEach(e -> result.put(e.getKey(), e.getValue()));
+        } else {
+            map.entrySet().stream().sorted(Map.Entry.<K, V>comparingByValue())
+                    .forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+        }
+        return result;
+    }
+
+    /**
+     * Sort map by key
+     *
+     * @param map 待排序的map
+     * @param isDesc 是否降序，true：降序，false：升序
+     * @param limit 取前几条
+     * @return 已排序map
+     */
+    public static <K extends Comparable<? super K>, V> Map<K, V> sortByKey(Map<K, V> map, boolean isDesc, int limit) {
+        Map<K, V> result = Maps.newLinkedHashMap();
+        if (isDesc) {
+            map.entrySet().stream().sorted(Map.Entry.<K, V>comparingByKey().reversed()).limit(limit)
+                    .forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+        } else {
+            map.entrySet().stream().sorted(Map.Entry.<K, V>comparingByKey())
+                    .forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+        }
+        return result;
+    }
+}
 ```
