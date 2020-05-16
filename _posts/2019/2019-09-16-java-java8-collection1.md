@@ -73,6 +73,23 @@ excerpt : java8对集合排序/去重/分组
     Collections.sort(students,(s1,s2) -> s1.getAge().compareTo(s2.getAge()));//按年龄倒升序
     如果属性类型为一般数据类型，则通过valueOf转化比较
     Collections.sort(students,(s1,s2) -> Integer.valueOf(s2.getGrade()).compareTo(s1.getGrade()));
+    /**
+     * Comparator.comparing 方法的使用
+     *
+     * comparing 方法接收一个 Function 函数式接口 ，通过一个 lambda 表达式传入
+     */
+    students.sort(Comparator.comparing(e -> e.getAge()));
+    /**
+     * 该方法引用 Student::getAge 可以代替 lambda表达式
+     */
+    students.sort(Comparator.comparing(Student::getAge));
+    /**
+      * 和comparing 方法一不同的是该方法多了一个参数 keyComparator,keyComparator 是创建一个自定义的比较器。
+      */
+    Collections.sort(students, Comparator.comparing(
+                    Student::getName, (s1, s2) -> {
+                        return s2.compareTo(s1);
+                    }));
     4.组合排序，Comparator提供的静态方法，先按年龄倒排序，年龄相同的按成绩正排序
     Collections.sort(students, Comparator.comparing(Student::getAge).reversed().thenComparing(Student::getGrade));
     组合排序另一种方式写法
@@ -84,15 +101,27 @@ excerpt : java8对集合排序/去重/分组
         }
     });
     students.forEach(System.out::println);
+    
+    5.使用 Comparator.nullsFirst进行排序
+    当集合中存在null元素时，可以使用针对null友好的比较器，null元素排在集合的最前面
+    Collections.sort(students, Comparator.nullsFirst(Comparator.comparing(Student::getName)));
+    Collections.sort(students, Comparator.nullsLast(Comparator.comparing(Student::getName)));
 ```
 - 使用stream排序
 
 ``` java
     List<Student> students = Student.generate();
+    按照年龄升序排获取第一个元素
+    Student student = students.stream()//findFirst-返回第一个元素//Optional是Java8中避免空指针异常的容器类
+                    .sorted((e1, e2) -> Integer.compare(e1.getAge(), e2.getAge()))
+                    .findFirst().get();
     按照成绩升序排
     students = students.stream().sorted(Comparator.comparing(Student::getGrade)).collect(Collectors.toList());
     按照成绩降序排
     students = students.stream().sorted(Comparator.comparing(Student::getGrade).reversed()).collect(Collectors.toList());//按照成绩降序
+    按照成绩降序排并按照年龄升序排
+    students = students.stream().sorted(Comparator.comparing(Student::getGrade).reversed().
+                                thenComparing(Student::getAge)).collect(Collectors.toList());
     
     如果类实现Comparable（implements Comparable<Student>） 并且 重写compareTo方法例如:
     @Override

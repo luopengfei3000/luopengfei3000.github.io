@@ -382,6 +382,46 @@ public class TestLambda3 {
 
 ##### 三、方法引用与构造器引用
 
+**方法引用**
+
+方法引用可以对‘某种特殊情况’下的Lambda表达式进行简化，‘某种特殊情况’是指Lambda表达式要做的事情别的方法实现了，那我们就可以直接使用这个方法，然后像Lambda表达式一样传递即可。方法引用的语法为目标引用放在分隔符::前，方法的名称放在后面，目标引用可以是类名也可以是对象名。通过以下三个例子来介绍方法引用的三种使用方法，新增Arithmetic类，Arithmetic类包含一个静态方法和一个实例方法：
+
+``` java
+public class Arithmetic {
+    public static int multiply(int a, int b){
+        return a * b;
+    }
+
+    public int add(int a, int b){
+        return a + b;
+    }
+}
+```
+
+1.指向静态方法的方法引用
+``` java
+int multiplyResult = doArithmetic(3, 2, Arithmetic::multiply);
+System.out.println(multiplyResult);//6
+```
+2.指向现有对象的实例方法的方法引用
+``` java
+Arithmetic arithmetic = new Arithmetic();
+int addResult = doArithmetic(3, 2, arithmetic::add);
+System.out.println(addResult);//5
+```
+3.指向任意类型实例方法的方法引用，这种情况有个特点，就是在引用一个对象的方法，而这个对象本身是Lambda的一个参数。比如现在需要实现比较两个数的大小，首先修改calculate方法参数类型为包装类型Integer：
+``` java
+@FunctionalInterface
+public interface Calculation {
+    int calculate(Integer a, Integer b);
+}
+```
+比较a和b的大小可以这样写：
+``` java
+int result = doArithmetic(3, 2, Integer::compareTo);//Integer::compareTo等于a.compareTo(b) 
+System.out.println(result);//1
+```
+
 ``` java
 /*
  * 一、方法引用：若Lambda体中的内容有方法已经实现了，我们可以使用“方法引用”（可以理解为方法引用时Lambda表达式的另一种表现形式）
