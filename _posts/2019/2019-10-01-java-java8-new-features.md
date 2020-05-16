@@ -829,12 +829,35 @@ public static< T> Stream< T> generate(Supplier< T> s)
         System.out.println(sum);
 
         System.out.println("--------------------------");
-
+        
         Optional<Double> op=employees.stream()//reduce(BinaryOperator b)//没有起始值，map返回可能为空，所以返回Optional类型
                                      .map(Employee::getSalary)
                                      .reduce(Double::sum);
         System.out.println(op.get());
     }
+```
+
+<label style="color:red">**⚠注意：如果Double类型相加可能会导致精度丢失，此时.reduce(Double::sum)不适用,解决方式如下：**</label>
+
+``` java
+    public class MathUtils {
+    	 /**
+         * 提供精确加法计算的add方法
+         * @param value1 被加数
+         * @param value2 加数
+         * @return 两个参数的和
+         */
+        public static double add(double value1,double value2){
+            BigDecimal b1 = new BigDecimal(Double.toString(value1));
+            BigDecimal b2 = new BigDecimal(Double.toString(value2));
+            return b1.add(b2).doubleValue();
+        }
+    } 
+
+    Optional<Double> op=employees.stream()//reduce(BinaryOperator b)//没有起始值，map返回可能为空，所以返回Optional类型
+                                         .map(Employee::getSalary)
+                                         .filter(item -> item != null).
+                                         .reduce(MathUtils::add);
 ```
 
 3．收集 
@@ -1066,7 +1089,7 @@ public class TestTransaction {
 
 #### 3 Optional类
 
-Optional< T>类(java.util.Optional) 是一个容器类，代表一个值存在或不存在。
+Optional<T>类(java.util.Optional) 是一个容器类，代表一个值存在或不存在。
  
 原来用null表示一个值不存在，现在 Optional可以更好的表达这个概念。并且可以避免空指针异常。
 

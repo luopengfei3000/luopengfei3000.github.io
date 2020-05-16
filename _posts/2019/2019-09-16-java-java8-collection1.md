@@ -36,22 +36,23 @@ excerpt : java8对集合排序/去重/分组
         private Integer age;
         private int grade;
         private String name;
-        
-        public static List<Student> generate() {
-            List<Student> list = new ArrayList<Student>(10);
-            list.add(new Student(12, "aa",88));
-            list.add(new Student(17, "cc",99));
-            list.add(new Student(14, "bb",85));
-            list.add(new Student(12, "ff",52));
-            list.add(new Student(16, "ss",92));
-            list.add(new Student(13, "kk",74));
-            list.add(new Student(18, "nn",53));
-            list.add(new Student(20, "rr",91));
-            list.add(new Student(19, "ww",79));
-            list.add(new Student(21, "pp",86));
-            list.add(new Student(34, "pp",44));
-            return list;
+        private Date bir;    
     
+        public static List<Student> generate() {
+            List<Student> list = new ArrayList<Student>();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            list.add(new Student(19, "aa", 88, sdf.parse("2020-5-16")));
+            list.add(new Student(17, "cc", 99, sdf.parse("2020-5-18")));
+            list.add(new Student(14, "bb", 85, null));
+            list.add(new Student(12, "ff", 52, sdf.parse("2020-5-16")));
+            list.add(new Student(16, "ss", 92, sdf.parse("2020-5-30")));
+            list.add(new Student(13, "kk", 74, sdf.parse("2020-6-16")));
+            list.add(new Student(18, "nn", 53, sdf.parse("2020-7-16")));
+            list.add(new Student(20, "rr", 91, sdf.parse("2020-2-16")));
+            list.add(new Student(19, "ww", 79, sdf.parse("2020-1-16")));
+            list.add(new Student(21, "pp", 86, sdf.parse("2020-11-16")));
+            list.add(new Student(34, "pp", 44, sdf.parse("2020-12-16")));
+            return list;
         }
 }
 
@@ -111,19 +112,23 @@ excerpt : java8对集合排序/去重/分组
 
 ``` java
     List<Student> students = Student.generate();
-    按照年龄升序排获取第一个元素
+    1. 按照年龄升序排获取第一个元素
     Student student = students.stream()//findFirst-返回第一个元素//Optional是Java8中避免空指针异常的容器类
                     .sorted((e1, e2) -> Integer.compare(e1.getAge(), e2.getAge()))
                     .findFirst().get();
-    按照成绩升序排
+    1.1 按照名称升序排获取第一个元素
+    Student student = students.stream()//findFirst-返回第一个元素//Optional是Java8中避免空指针异常的容器类
+                    .sorted((e1, e2) -> e1.getName().compareTo(e2.getName()))
+                    .findFirst().get();
+    2. 按照成绩升序排
     students = students.stream().sorted(Comparator.comparing(Student::getGrade)).collect(Collectors.toList());
-    按照成绩降序排
+    3. 按照成绩降序排
     students = students.stream().sorted(Comparator.comparing(Student::getGrade).reversed()).collect(Collectors.toList());//按照成绩降序
-    按照成绩降序排并按照年龄升序排
+    4. 按照成绩降序排并按照年龄升序排
     students = students.stream().sorted(Comparator.comparing(Student::getGrade).reversed().
                                 thenComparing(Student::getAge)).collect(Collectors.toList());
     
-    如果类实现Comparable（implements Comparable<Student>） 并且 重写compareTo方法例如:
+    5. 如果类实现Comparable（implements Comparable<Student>） 并且 重写compareTo方法例如:
     @Override
     public int compareTo(Student ob) {
         return name.compareTo(ob.getName());
@@ -131,6 +136,9 @@ excerpt : java8对集合排序/去重/分组
     此时，下面方法按照name排序
     students = students.stream().sorted().collect(Collectors.toList());
     students.forEach(System.out::println);
+    6. 获取最小日期（日期中有空值则过滤），最高成绩
+    Date date = students.stream().map(Student::getBir).filter(item -> item != null).min(Date::compareTo).get();
+    Integer integer = students.stream().map(Student::getGrade).max(Integer::compareTo).get();
 ```
 
 #### list集合去重
@@ -232,11 +240,32 @@ excerpt : java8对集合排序/去重/分组
 ```
 
 ``` java
-[Student{age=22, grade=0, name='路飞'}, 
+[Student{age=0, grade=0, name='路飞'}, 
+Student{age=22, grade=0, name='路飞'}, 
 Student{age=40, grade=0, name='红发'}, 
 Student{age=50, grade=185, name='白胡子'}, 
 Student{age=25, grade=183, name='艾斯'}, 
 Student{age=48, grade=176, name='雷利'}]
+```
+
+#### list两个集合取差
+
+``` java
+    List<Student> generate = Student.generate();
+    //集合中全部对象
+    System.out.println(generate.size());
+    //名称为pp和ww的对象集合
+    List<Student> collect = generate.stream().filter(item -> ("pp".equals(item.getName()) || "ww".equals(item.getName()))).collect(Collectors.toList());
+    System.out.println(collect.size());
+    //去除名称为pp和ww的对象集合，剩余的对象集合
+    List<Student> collect1 = generate.stream().filter(item -> !collect.contains(item)).collect(Collectors.toList());
+    System.out.println(collect1.size());
+```
+
+``` java
+    11
+    3
+    8
 ```
 
 #### Map集合排序
