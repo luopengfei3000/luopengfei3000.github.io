@@ -258,7 +258,7 @@ public interface MyFun {
 //需求：对一个数进行运算
 @Test
 public void  test6(){
-    Integer num=operation(100, (x)->x*x);
+    Integer num = operation(100, (x)->x*x);
     System.out.println(num);
 
     System.out.println(operation(200, (y)->y+200));
@@ -387,6 +387,10 @@ public class TestLambda3 {
 方法引用可以对‘某种特殊情况’下的Lambda表达式进行简化，‘某种特殊情况’是指Lambda表达式要做的事情别的方法实现了，那我们就可以直接使用这个方法，然后像Lambda表达式一样传递即可。方法引用的语法为目标引用放在分隔符::前，方法的名称放在后面，目标引用可以是类名也可以是对象名。通过以下三个例子来介绍方法引用的三种使用方法，新增Arithmetic类，Arithmetic类包含一个静态方法和一个实例方法：
 
 ``` java
+public static int doArithmetic(int a, int b, Calculation calculation){
+    return calculation.calculate(a, b);
+}
+
 public class Arithmetic {
     public static int multiply(int a, int b){
         return a * b;
@@ -835,6 +839,9 @@ public static< T> Stream< T> generate(Supplier< T> s)
                                      .reduce(Double::sum);
         System.out.println(op.get());
     }
+
+    //大数类型:reduce调用BigDecimal::add方法(wage类型为BigDecimal)
+    list.stream().map(User::getWage).reduce(BigDecimal.ZERO, BigDecimal::add);
 ```
 
 <label style="color:red">**⚠注意：如果Double类型相加可能会导致精度丢失，此时.reduce(Double::sum)不适用,解决方式如下：**</label>
@@ -858,6 +865,7 @@ public static< T> Stream< T> generate(Supplier< T> s)
                                          .map(Employee::getSalary)
                                          .filter(item -> item != null).
                                          .reduce(MathUtils::add);
+    System.out.println(reduce.orElse(0d));
 ```
 
 3．收集 

@@ -237,6 +237,8 @@ excerpt : java8对集合排序/去重/分组
    List<Student> studentList =  Stream.of(students,students1).flatMap(students2 -> students2.stream()).collect(Collectors.toList());
 
    System.out.println(studentList.toString());
+    //如果更多的集合 Stream.of(students,students1,students2,...)
+    List<Student> studentList =  Stream.of(students,students1,students2,...).flatMap(item -> item.stream()).collect(Collectors.toList());
 ```
 
 ``` java
