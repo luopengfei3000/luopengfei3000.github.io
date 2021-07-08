@@ -233,3 +233,105 @@ mybatis会根据记录数返回值来进行数据的转换
 ```
 update table set x=x+1, version=version+1 where id=#{id} and version=#{version};
 ```
+
+#### 8.Oracle自定义聚合函数实现字符串连接的聚合
+
+```
+select 
+       LISTAGG(t.mds_vendor_id, ',') within group(order by t.creation_date) AS mds_vendor_id
+from wms_user_vendor_config t
+```
+将wms_user_vendor_config表中mds_vendor_id字段拼接成逗号分隔的字符串，如果数据量太大，则报错。
+因此使用自定义聚合函数实现字符串连接的聚合
+
+```
+CREATE OR REPLACE FUNCTION Jion_String_Comma_f(Input VARCHAR2)
+  RETURN VARCHAR2
+  PARALLEL_ENABLE
+  AGGREGATE 
+  USING Jion_String_Comma_f_Tp; --最重要是Jion_String_Comma_f_Tp
+```
+
+```
+CREATE OR REPLACE TYPE "JION_STRING_COMMA_F_TP"                                          AS OBJECT
+(
+--聚合函数的实质就是一个对象 
+--vStr VARCHAR2(4000),
+  Vstr Varchar_Array_Tp, --此处也是创建了一个TYPE
+
+  STATIC FUNCTION Odciaggregateinitialize(Sctx IN OUT Jion_String_Comma_f_Tp)
+    RETURN NUMBER,
+  --对象初始化 
+  MEMBER FUNCTION Odciaggregateiterate(SELF  IN OUT Jion_String_Comma_f_Tp,
+                                       VALUE IN VARCHAR2) RETURN NUMBER,
+  --聚合函数的迭代方法(这是最重要的方法) 
+  MEMBER FUNCTION Odciaggregatemerge(SELF IN OUT Jion_String_Comma_f_Tp,
+                                     Ctx2 IN Jion_String_Comma_f_Tp)
+    RETURN NUMBER,
+  --当查询语句并行运行时,才会使用该方法,可将多个并行运行的查询结果聚合 
+  MEMBER FUNCTION Odciaggregateterminate(SELF        IN Jion_String_Comma_f_Tp,
+                                         Returnvalue OUT VARCHAR2,
+                                         Flags       IN NUMBER)
+    RETURN NUMBER
+ --终止聚集函数的处理,返回聚集函数处理的结果. 
+)
+```
+```
+CREATE OR REPLACE TYPE "VARCHAR_ARRAY_TP" IS TABLE OF VARCHAR2(4000)
+```
+
+创建TYPE BODY
+```
+CREATE OR REPLACE TYPE BODY "JION_STRING_COMMA_F_TP" IS
+  STATIC FUNCTION Odciaggregateinitialize(Sctx IN OUT Jion_String_Comma_f_Tp)
+    RETURN NUMBER IS
+  BEGIN
+    Sctx := Jion_String_Comma_f_Tp(Varchar_Array_Tp());
+    RETURN Odciconst.Success;
+  END;
+
+  MEMBER FUNCTION Odciaggregateiterate(SELF  IN OUT Jion_String_Comma_f_Tp,
+                                       VALUE IN VARCHAR2) RETURN NUMBER IS
+  BEGIN
+    Vstr.EXTEND;
+    Vstr(Vstr.COUNT) := VALUE;
+    RETURN Odciconst.Success;
+  END;
+
+  MEMBER FUNCTION Odciaggregatemerge(SELF IN OUT Jion_String_Comma_f_Tp,
+                                     Ctx2 IN Jion_String_Comma_f_Tp)
+    RETURN NUMBER IS
+  BEGIN
+    RETURN Odciconst.Success;
+  END;
+
+  MEMBER FUNCTION Odciaggregateterminate(SELF        IN Jion_String_Comma_f_Tp,
+                                         Returnvalue OUT VARCHAR2,
+                                         Flags       IN NUMBER) RETURN NUMBER IS
+    Tmp_Vstr VARCHAR2(4000);
+  BEGIN
+    --添加一条空记录,用作循环最后处理
+    FOR Rec_Value IN (SELECT Column_Value FROM TABLE(Vstr)) LOOP
+
+      Tmp_Vstr := substr(Tmp_Vstr || ',' || Rec_Value.Column_Value,1,3999);
+      --Tmp_Vstr := Tmp_Vstr || ',' || Rec_Value.Column_Value;
+
+      --太长时截断
+      IF Lengthb(Tmp_Vstr) >= 3999 THEN
+        EXIT;
+      END IF;
+
+    END LOOP;
+
+    Returnvalue := Ltrim(Tmp_Vstr, ',');
+    RETURN Odciconst.Success;
+  END;
+END;
+```
+此时解决数据量大拼接字段串问题
+```
+select 
+   Jion_String_Comma_f(t.mds_vendor_id) AS mds_vendor_id
+from wms_user_vendor_config t
+```
+
